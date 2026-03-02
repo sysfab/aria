@@ -1,7 +1,7 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, ... }:
 
 {
-    flake.homeModules.vscodium = {
+    flake.homeModules.vscode = {
         programs.vscode = {
             enable = true;
             package = pkgs.vscodium;
