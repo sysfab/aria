@@ -1,4 +1,4 @@
-{ ... }:
+{ self, ... }:
 
 {
     flake.nixosModules.user-example = { ... }: {
@@ -13,6 +13,10 @@
 
         home-manager.users.example = {
             home.stateVersion = "25.05";
+
+            imports = [
+                self.homeModules.hyprland-config
+            ];
         };
     };
 }

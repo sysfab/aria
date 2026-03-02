@@ -3,7 +3,6 @@
 let
     env = import ./env.nix {};
     inputs = import ./inputs.nix {};
-    monitors = import ./monitors.nix {};
     misc = import ./misc.nix {};
     autostart = import ./autostart.nix {};
 
@@ -13,7 +12,6 @@ let
 in
 env //
 inputs // 
-monitors //
 misc //
 autostart //
 look_animations //
