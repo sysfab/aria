@@ -3,7 +3,6 @@
 {
     flake.nixosModules.desktop = { pkgs, ... }: {
         services.gvfs.enable = true;
-        services.dconf.enable = true;
 
         environment.systemPackages = with pkgs; [
             gsettings-desktop-schemas
