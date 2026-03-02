@@ -20,4 +20,4 @@ fi
 echo "$wallpapers/$choice" > "$selected"
 update-wallpaper
 
-'';
+''

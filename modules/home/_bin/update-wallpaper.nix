@@ -10,4 +10,4 @@ wallpaper=$(cat "$selected")
 
 swww img "$wallpaper"
 
-'';
+''
