@@ -22,8 +22,8 @@
         "SUPER, C, killactive,"
         "SUPER, V, togglefloating,"
 
-        "SUPER, A, layoutmsg togglesplit"
-        "SUPER, D, layoutmsg swapsplit"
+        "SUPER, A, layoutmsg, togglesplit"
+        "SUPER, D, layoutmsg, swapsplit"
 
         ", PRINT, exec, hyprshot -m region --freeze"
         "SHIFT, PRINT, exec, hyprshot -m output --freeze"
