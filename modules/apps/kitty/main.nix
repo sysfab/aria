@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-    flake.homeModules.kitty = {
+    flake.homeModules.kitty = { ... }: {
         programs.kitty = {
             enable = true;
 
