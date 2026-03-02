@@ -1,0 +1,27 @@
+{
+    "security.workspace.trust.enabled": false,
+
+    "workbench.list.smoothScrolling": true,
+    "workbench.activityBar.location": "top",
+    "workbench.tips.enabled": false,
+    "workbench.colorTheme": "Pitch Black",
+    "workbench.editor.empty.hint": "hidden",
+
+    "terminal.integrated.smoothScrolling": true,
+
+    "editor.smoothScrolling": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.mouseWheelZoom": true,
+    "editor.minimap.enabled": false,
+
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "[nix]": {
+        "editor.tabSize": 4
+    },
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmPasteNative": false
+}

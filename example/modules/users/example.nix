@@ -16,6 +16,7 @@
 
             imports = [
                 self.homeModules.hyprland-config
+                # add other stuff
             ];
         };
     };
