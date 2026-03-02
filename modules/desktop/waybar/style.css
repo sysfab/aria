@@ -1,0 +1,61 @@
+* {
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius:0px;
+    color: #ffffff;
+}
+
+tooltip {
+     border-radius: 0px;
+     background-color: rgba(0, 0, 0, 0.8);
+     border: none;
+}
+
+button {
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+}
+
+#custom-notification {
+    background-color: transparent;
+    padding: 0 5px;
+    margin-left: 0px;
+    margin-right: 5px;
+}
+
+#custom-power {
+    background-color: transparent;
+    padding: 0 5px;
+    margin-left: 0px;
+    margin-right: 5px;
+}
+
+#tray {
+    background-color: transparent;
+    padding: 0 10px;
+    margin: 0 4px;
+}
+
+#language {
+    background-color: rgba(0, 0, 0, 0);
+
+    text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+
+    padding: 0 12px;
+    border-radius: 0px;
+}
+
+#clock {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+}

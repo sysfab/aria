@@ -1,0 +1,25 @@
+.control-center {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0px;
+    margin: 0px;
+    padding: 14px;
+}
+
+.control-center .notification-row .notification-background {
+  color: transparent;
+  background-color: transparent;
+}
+
+
+.notification {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: transparent;
+    border-radius: 0px;
+    margin: 6px 12px;
+    padding: 10px;
+}
+
+.notification-body {
+    color: #e0e0e0;
+    font-size: 14px;
+}
