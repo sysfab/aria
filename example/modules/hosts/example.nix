@@ -1,9 +1,8 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 
 {
     flake.nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
 
         modules = inputs.aria.all.system ++ [
             inputs.home-manager.nixosModules.home-manager {
@@ -13,12 +12,10 @@
 
                     useGlobalPkgs = true;
                     useUserPackages = true;
-
-                    users.example = {
-                        home.stateVersion = "25.05";
-                    };
                 };
             }
+
+            self.nixosModules.user-example
         ];
     };
 }
