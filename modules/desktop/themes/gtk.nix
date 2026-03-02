@@ -20,8 +20,12 @@
         };
     in
     {
-        dconf.settings."org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
+        programs.dconf.enable = true;
+        dconf = {
+            enable = true;
+            settings."org/gnome/desktop/interface" = {
+                color-scheme = "prefer-dark";
+            };
         };
 
         gtk = {

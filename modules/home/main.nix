@@ -6,8 +6,6 @@ let
 in
 {
     flake.homeModules.home = { pkgs, ... }: {
-        dconf.enable = true;
-
         home.file = {
             "Pictures/Wallpapers/aria.jpg".source = ./aria.jpg;
             ".aria/.keep".text = "";
