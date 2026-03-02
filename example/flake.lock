@@ -8,11 +8,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1772471267,
-        "narHash": "sha256-PRxkT7E3gonlNpTlGzbb3E7vzbMB2n7wgWs1oND0lDY=",
+        "lastModified": 1772473106,
+        "narHash": "sha256-v2gxNVKVxNiNUVvBlSlADQBwJZJMDLx8xa/VGFJ/Ug8=",
         "owner": "sysfab",
         "repo": "aria",
-        "rev": "8d0db87c3a3a943d9a70559d3c78a432c09243e5",
+        "rev": "dcc92d7c1f770101fc8690df48a467c8e6794aa6",
         "type": "github"
       },
       "original": {

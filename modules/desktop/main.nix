@@ -19,11 +19,6 @@
     flake.homeModules.desktop = { lib, pkgs, ... }: {
         xdg.portal.enable = lib.mkForce false;
 
-        home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-        };
-
         home.packages = with pkgs; [
             adw-gtk3
             adwaita-icon-theme
