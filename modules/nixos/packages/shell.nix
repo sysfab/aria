@@ -3,7 +3,6 @@
 {
     flake.nixosModules.shell-packages = { pkgs, ... }: {
         environment.systemPackages = with pkgs; [
-            gh
             zip
             unzip
             bat

@@ -10,5 +10,7 @@
                 credential."https://gist.github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
             };
         };
+
+        environment.systemPackages = [ pkgs.gh ];
     };
 }
