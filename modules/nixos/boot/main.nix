@@ -7,15 +7,11 @@
                 grub = {
                     enable = true;
 
-                    efiSupport = true;
-                    device = "nodev";
-
                     theme = ./grub-theme;
                     splashImage = ./grub-theme/background.jpeg;
                 };
 
                 timeout = 1;
-                efi.canTouchEfiVariables = true;
             };
 
             consoleLogLevel = 0;
