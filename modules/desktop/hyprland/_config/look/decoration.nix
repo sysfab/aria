@@ -34,7 +34,7 @@
         "match:class org.gnome.Loupe, opacity 0.8 0.8"
         "match:class org.gnome.Calculator, opacity 0.8 0.8"
         "match:class org.gnome.SystemMonitor, opacity 0.8 0.8"
-        "match:class dev.aria.app, opacity 0.8 0.8"
+        "match:class gay.vaskel.soteria, opacity 0.8 0.8"
     ];
 
     layerrule = [
