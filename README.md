@@ -3,6 +3,11 @@
 Minimalistic x86_64 NixOS configuration  
 It's an public part of my config
 
+# Images
+
+![Apps and notifications](media/1.png)  
+![Wallpaper picker](media/2.png)  
+
 ## How to use?
 
 Recommended way to use it - import in flake repo:
