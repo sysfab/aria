@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    flake.homeModules.gtk = { pkgs, ... }: 
+    flake.homeModules.gtk = { config, pkgs, ... }: 
     let
         yamis-icons = (pkgs.callPackage ./_icons.nix {});
     in
@@ -31,7 +31,7 @@
                 package = pkgs.vimix-cursors;
             };
 
-
+            gtk4.theme = null;
             gtk4.extraCss = ''
                 /* --- Main Window --- */
                 :root {
