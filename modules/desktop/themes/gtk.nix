@@ -4,6 +4,7 @@
     flake.homeModules.gtk = { config, pkgs, ... }: 
     let
         yamis-icons = (pkgs.callPackage ./_icons.nix {});
+        moga-cursor = (pkgs.callPackage ./assets/Moga-Cursor/_package.nix {});
     in
     {
         dconf = {
@@ -27,8 +28,8 @@
             };
 
             cursorTheme = {
-                name = "Vimix-cursors";
-                package = pkgs.vimix-cursors;
+                name = "Moga-Cursor";
+                package = moga-cursor;
             };
 
             gtk4.theme = null;
