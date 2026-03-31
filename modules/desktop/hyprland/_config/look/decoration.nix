@@ -25,6 +25,8 @@
     };
 
     windowrule = [
+        "match:float 1, rounding 10"
+
         "match:class kitty, opacity 0.8 0.8"
         "match:class codium, opacity 0.8 0.8"
         "match:class google-chrome, opacity 0.8 0.8"
