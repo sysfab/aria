@@ -26,7 +26,7 @@
             papirus-icon-theme
             gnome-themes-extra
 
-            swww
+            awww
             hyprshot
             
             kitty
