@@ -8,6 +8,6 @@ selected="$HOME/.aria/wallpaper.txt"
 wallpaper=$(cat "$selected")
 [ -f "$wallpaper" ] || { echo "$HOME/Pictures/Wallpapers/aria.png" > "$selected"; wallpaper="$HOME/Pictures/Wallpapers/aria.png"; }
 
-swww img "$wallpaper"
+awww img "$wallpaper"
 
 ''
