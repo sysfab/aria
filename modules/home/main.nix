@@ -28,7 +28,7 @@ in
                 cat = "bat";
                 ls = "eza --long --color=always --icons=always --no-user --no-permissions";
                 sd = "rg";
-                code = "codium";
+                code = "codium &> /dev/null";
             };
 
             enableCompletion = true;
