@@ -1,7 +1,7 @@
 # Aria!
 
 Minimalistic x86_64 NixOS configuration  
-It's an public part of my config
+It's a public part of my config
 
 # Images
 
