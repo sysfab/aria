@@ -8,6 +8,12 @@ selected="$HOME/.aria/wallpaper.txt"
 wallpaper=$(cat "$selected")
 [ -f "$wallpaper" ] || { echo "$HOME/Pictures/Wallpapers/aria.png" > "$selected"; wallpaper="$HOME/Pictures/Wallpapers/aria.png"; }
 
-awww img "$wallpaper"
+# Check for --instant flag
+instant_flag=""
+if [ "$1" = "--instant" ]; then
+  instant_flag="--transition none"
+fi
+
+awww img $instant_flag "$wallpaper"
 
 ''
