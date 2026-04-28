@@ -12,6 +12,8 @@ in
         };
 
         home.packages = [
+            (pkgs.callPackage ./_bin/aria-picker.nix {})
+
             (pkgs.callPackage ./_bin/aria-pick-power.nix {})
 
             (pkgs.callPackage ./_bin/aria-pick-wallpaper.nix {})
