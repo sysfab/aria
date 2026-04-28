@@ -41,12 +41,6 @@
         };
     };
 
-    "hyprland/language" = {
-        format = "{}";
-        format-en = "";
-        format-uk = "";
-    };
-
     "tray" = {
         spacing = 10;
         show-passive-items = true;
@@ -72,16 +66,8 @@
         escape = true;
     };
 
-    "custom/power" = {
-        format = "";
-        tooltip = false;
-        on-click = "pick-power";
-    };
-
-
     modules-left = [
         "tray"
-        "hyprland/language"
     ];
 
     modules-center = [
@@ -90,6 +76,5 @@
 
     modules-right = [
         "custom/notification"
-        "custom/power"
     ];
 }
