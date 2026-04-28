@@ -17,7 +17,7 @@
         "SUPER, E, exec, nautilus"
 
         "SUPER, R, exec, pkill rofi || rofi -show drun"
-        "SUPER SHIFT, R, exec, pick-wallpaper"
+        "SUPER SHIFT, R, exec, aria-pick-wallpaper"
 
         "SUPER, C, killactive,"
         "SUPER, V, togglefloating,"

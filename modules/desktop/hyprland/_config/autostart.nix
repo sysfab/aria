@@ -5,7 +5,7 @@
         "dbus-update-activation-environment --systemd --all"
         
         "awww-daemon"
-        "update-wallpaper --instant"
+        "aria-update-wallpaper --instant"
 
         "pkill waybar; waybar"
     ];

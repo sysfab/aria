@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "pick-power" ''
+pkgs.writeShellScriptBin "aria-pick-power" ''
 
 options="Shutdown\nReboot\nLogout"
 

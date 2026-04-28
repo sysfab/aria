@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "pick-wallpaper" ''
+pkgs.writeShellScriptBin "aria-pick-wallpaper" ''
 
 selected="$HOME/.aria/wallpaper.txt"
 wallpapers="$HOME/Pictures/Wallpapers"
@@ -22,6 +22,6 @@ if [ "$choice" = "Random" ]; then
 fi
 
 echo "$wallpapers/$choice" > "$selected"
-update-wallpaper
+aria-update-wallpaper
 
 ''

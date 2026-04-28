@@ -12,10 +12,10 @@ in
         };
 
         home.packages = [
-            (pkgs.callPackage ./_bin/pick-power.nix {})
+            (pkgs.callPackage ./_bin/aria-pick-power.nix {})
 
-            (pkgs.callPackage ./_bin/pick-wallpaper.nix {})
-            (pkgs.callPackage ./_bin/update-wallpaper.nix {})
+            (pkgs.callPackage ./_bin/aria-pick-wallpaper.nix {})
+            (pkgs.callPackage ./_bin/aria-update-wallpaper.nix {})
         ];
 
         programs.bash = {

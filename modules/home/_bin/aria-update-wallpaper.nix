@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "update-wallpaper" ''
+pkgs.writeShellScriptBin "aria-update-wallpaper" ''
 
 selected="$HOME/.aria/wallpaper.txt"
 [ -f "$selected" ] || echo "$HOME/Pictures/Wallpapers/aria.png" > "$selected"
