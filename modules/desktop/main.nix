@@ -33,7 +33,6 @@
             nautilus
             pavucontrol
             coppwr
-            clapper
             decibels
             loupe
             gnome-system-monitor
