@@ -31,6 +31,7 @@
         "match:class codium, opacity 0.8 0.8"
         "match:class google-chrome, opacity 0.8 0.8"
         "match:class discord, opacity 0.8 0.8"
+        "match:class steam, opacity 0.8 0.8"
         "match:class org.gnome.Nautilus, opacity 0.8 0.8"
         "match:class org.gnome.Decibels, opacity 0.8 0.8"
         "match:class org.gnome.Loupe, opacity 0.8 0.8"
