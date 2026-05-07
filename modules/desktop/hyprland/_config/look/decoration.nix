@@ -26,18 +26,6 @@
 
     windowrule = [
         "match:float 1, rounding 10"
-
-        "match:class kitty, opacity 0.8 0.8"
-        "match:class codium, opacity 0.8 0.8"
-        "match:class google-chrome, opacity 0.8 0.8"
-        "match:class discord, opacity 0.8 0.8"
-        "match:class steam, opacity 0.8 0.8"
-        "match:class org.gnome.Nautilus, opacity 0.8 0.8"
-        "match:class org.gnome.Decibels, opacity 0.8 0.8"
-        "match:class org.gnome.Loupe, opacity 0.8 0.8"
-        "match:class org.gnome.Calculator, opacity 0.8 0.8"
-        "match:class org.gnome.SystemMonitor, opacity 0.8 0.8"
-        "match:class gay.vaskel.soteria, opacity 0.8 0.8"
     ];
 
     layerrule = [
