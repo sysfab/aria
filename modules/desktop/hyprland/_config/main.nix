@@ -9,6 +9,8 @@ let
     look_animations = import ./look/animations.nix {};
     look_decoration = import ./look/decoration.nix {};
     look_general = import ./look/general.nix {};
+
+    plugins_overview = import ./plugins/overview.nix {};
 in
 env //
 inputs // 
@@ -16,4 +18,5 @@ misc //
 autostart //
 look_animations //
 look_decoration //
-look_general
+look_general //
+plugins_overview
