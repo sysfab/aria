@@ -23,6 +23,7 @@
         "SUPER, V, togglefloating,"
 
         "SUPER, A, layoutmsg, togglesplit"
+        "SUPER, S, layoutmsg, rotatesplit"
         "SUPER, D, layoutmsg, swapsplit"
 
         ", PRINT, exec, hyprshot -m region --freeze"
