@@ -9,6 +9,8 @@
             plugins = with pkgs.hyprlandPlugins; [
                 hyprspace
             ];
+
+            configType = "hyprlang";
         };
     };
 }
