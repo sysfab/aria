@@ -1,0 +1,90 @@
+config({
+    general = {
+        layout = "dwindle",
+
+        gaps_in = 0,
+        gaps_out = 0,
+        border_size = 0,
+
+        col = {
+            active_border = "rgba(0,0,0,0.5)",
+            inactive_border = "rgba(0,0,0,0.2)",
+        },
+
+        allow_tearing = false,
+    },
+
+    dwindle = {
+        preserve_split = true,
+    },
+
+    decoration = {
+        rounding = 0,
+        rounding_power = 2.0,
+
+        active_opacity = 1.0,
+        inactive_opacity = 1.0,
+
+        shadow = {
+            enabled = false,
+        },
+
+        blur = {
+            enabled = true,
+            size = 1,
+            passes = 4,
+        },
+    },
+})
+
+curves({
+    easeOutQuint = {type = "bezier", points = {{0.23,1}, {0.32,1}}},
+    easeInOutCubic = {type = "bezier", points = {{0.65,0.05}, {0.36,1}}},
+    linear = {type = "bezier", points = {{0,0}, {1,1}}},
+    almostLinear = {type = "bezier", points = {{0.5,0.5}, {0.75,1.0}}},
+    quick = {type = "bezier", points = {{0.15,0}, {0.1,1}}},
+})
+
+animations(
+    {leaf = "global", speed = 10, bezier = "default", enabled = true},
+    {leaf = "windows", speed = 4.79, bezier = "easeOutQuint", enabled = true},
+    {leaf = "windowsIn", speed = 4.1, bezier = "easeOutQuint", style = "popin 85%", enabled = true},
+    {leaf = "windowsOut",speed = 1.49, bezier = "linear", style = "popin 85%", enabled = true},
+    {leaf = "layers", speed = 3.81, bezier = "easeOutQuint", enabled = true},
+    {leaf = "layersIn", speed = 4, bezier = "easeOutQuint", style = "fade", enabled = true},
+    {leaf = "layersOut", speed = 1.5, bezier = "linear", style = "fade", enabled = true},
+    {leaf = "fade", speed = 3.03, bezier = "quick", enabled = true},
+    {leaf = "fadeIn", speed = 1.73, bezier = "almostLinear", enabled = true},
+    {leaf = "fadeOut", speed = 1.46, bezier = "almostLinear", enabled = true},
+    {leaf = "fadeLayersIn", speed = 1.79, bezier = "almostLinear", enabled = true},
+    {leaf = "fadeLayersOut", speed = 1.39, bezier = "almostLinear", enabled = true},
+    {leaf = "border", speed = 5.39, bezier = "easeOutQuint", enabled = true},
+    {leaf = "workspaces", speed = 1.94, bezier = "almostLinear", style = "fade", enabled = true},
+    {leaf = "workspacesIn", speed = 1.21, bezier = "almostLinear", style = "fade", enabled = true},
+    {leaf = "workspacesOut", speed = 1.94, bezier = "almostLinear", style = "fade", enabled = true}
+)
+
+window_rules(
+    {
+        match = { float = true },
+        rounding = 10
+    }
+)
+
+layer_rules(
+    {
+        match = { namespace = "rofi" },
+        blur = true,
+        ignore_alpha = 0.1
+    },
+    {
+        match = { namespace = "waybar" },
+        blur = true,
+        ignore_alpha = 0.1
+    },
+    {
+        match = { namespace = "swaync-control-center" },
+        blur = true,
+        ignore_alpha = 0.1
+    }
+)

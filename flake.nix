@@ -1,11 +1,12 @@
 {
-    description = "Minimalistic x86_64 NixOS configuration";
+    description = "Minimalistic NixOS configuration";
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-        
-        home-manager = {
-            url = "github:nix-community/home-manager";
+        wrappers.url = "github:lassulus/wrappers";
+
+        hjem = {
+            url = "github:feel-co/hjem";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
@@ -15,19 +16,38 @@
 
     outputs = inputs @ { self, ... }:
         let
-            modules = (inputs.import-tree ./modules).imports;
+            modules = [ (inputs.import-tree ./modules) ];
         in
         inputs.flake-parts.lib.mkFlake { inherit inputs; }
             {
                 systems = ["x86_64-linux"];
 
                 flake.all = {
-                    system = builtins.attrValues self.nixosModules;
                     home = builtins.attrValues self.homeModules;
+
+                    system = [
+                        inputs.hjem.nixosModules.default
+                        ({...}: let
+                            modules = builtins.attrValues self.homeModules;
+                        in {
+                            hjem.extraModules = modules;
+                        })
+                    ] ++ (builtins.attrValues self.nixosModules);
                 };
 
-                imports = modules ++ [
-                    inputs.home-manager.flakeModules.home-manager
-                ];
+                imports = [
+                    (
+                        {lib, flake-parts-lib, ...}: {
+                            options = {
+                                flake = flake-parts-lib.mkSubmoduleOptions {
+                                    homeModules = lib.mkOption {
+                                        type = lib.types.lazyAttrsOf lib.types.deferredModule;
+                                        default = { };
+                                    };
+                                };
+                            };
+                        }
+                    )
+                ] ++ modules;
             };
 }

@@ -1,3 +1,5 @@
 if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
-    exec start-hyprland > /dev/null 2>&1
+    if uwsm check may-start; then
+        exec uwsm start hyprland-uwsm.desktop
+    fi
 fi
