@@ -3,8 +3,9 @@ start_cmd(
     
     -- daemons
     "awww-daemon",
-    "pkill swaync; swaync",
 
-    "aria-update-wallpaper --instant",
-    "pkill waybar; waybar"
+    "pkill swaync; swaync",
+    "pkill waybar; waybar",
+
+    "aria-update-wallpaper --instant"
 )
