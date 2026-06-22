@@ -15,7 +15,7 @@ config({
 local MAIN_MOD = "SUPER"
 
 
-bind({MAIN_MOD, "Q"}, cmd("kitty"))
+bind({MAIN_MOD, "Q"}, cmd("foot"))
 bind({MAIN_MOD, "E"}, cmd("nautilus"))
 
 bind({MAIN_MOD, "R"},          cmd("pkill rofi || rofi -show drun"))
