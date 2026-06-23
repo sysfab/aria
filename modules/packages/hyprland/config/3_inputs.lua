@@ -21,12 +21,11 @@ bind({MAIN_MOD, "E"}, cmd("nautilus"))
 bind({MAIN_MOD, "R"},          cmd("pkill rofi || rofi -show drun"))
 bind({MAIN_MOD, "SHIFT", "R"}, cmd("aria-picker"))
 
-bind({MAIN_MOD, "F"}, window.tag({ tag = "no_share" }))
+bind({MAIN_MOD, "F"}, window.tag({ tag = "no_share" })) -- toggles
+bind({MAIN_MOD, "V"}, window.float({ action = "toggle" }))
 
 bind({MAIN_MOD, "C"},          window.close())
 bind({MAIN_MOD, "SHIFT", "C"}, window.kill())
-
-bind({MAIN_MOD, "V"}, window.float({ action = "toggle" }))
 
 bind({MAIN_MOD, "A"}, layout("togglesplit"))
 bind({MAIN_MOD, "S"}, layout("rotatesplit"))
@@ -36,19 +35,10 @@ bind({"", "PRINT"},       cmd("hyprshot -m region --freeze"))
 bind({"SHIFT", "PRINT"},  cmd("hyprshot -m output --freeze"))
 bind({MAIN_MOD, "PRINT"}, cmd("hyprshot -m window --freeze"))
 
-bind({MAIN_MOD, "SHIFT", "B"}, cmd("pkill waybar; waybar"))
-
 bind({MAIN_MOD, "left"},  window.move({ direction = "left" }))
 bind({MAIN_MOD, "right"}, window.move({ direction = "right" }))
 
-bind({MAIN_MOD, "up"},   window.fullscreen({ mode = "fullscreen", action = "unset" }))
-bind({MAIN_MOD, "down"}, window.fullscreen({ mode = "fullscreen", action = "set" }))
-
-bind({MAIN_MOD, "SHIFT", "right"}, workspace.move({ monitor = "+1" }))
-bind({MAIN_MOD, "SHIFT", "left"},  workspace.move({ monitor = "-1" }))
-
-bind({MAIN_MOD, "mouse_down"}, focus({ workspace = "e+1" }))
-bind({MAIN_MOD, "mouse_up"},   focus({ workspace = "e-1" }))
+bind({MAIN_MOD, "down"}, window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 
 -- Move/resize windows
 bind({MAIN_MOD, "mouse:272"}, window.drag(),   { mouse = true })
