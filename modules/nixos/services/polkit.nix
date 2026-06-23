@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    flake.nixosModules.polkit = { pkgs, ... }: {
+    flake.nixosModules.polkit = { ... }: {
         security.soteria.enable = true;
     };
 }

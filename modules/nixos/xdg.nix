@@ -40,7 +40,7 @@
                     "video/x-flv" = [ "com.github.rafostar.Clapper.desktop" ];
                     "video/x-msvideo" = [ "com.github.rafostar.Clapper.desktop" ];
                     "application/x-matroska" = [ "com.github.rafostar.Clapper.desktop" ];
-                
+
                     "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
                     "image/png" = [ "org.gnome.Loupe.desktop" ];
                     "image/gif" = [ "org.gnome.Loupe.desktop" ];
@@ -55,12 +55,12 @@
             portal = {
                 enable = true;
                 xdgOpenUsePortal = true;
-                
+
                 extraPortals = [
                     pkgs.xdg-desktop-portal-gnome
                     pkgs.xdg-desktop-portal-gtk
                 ];
-                
+
                 config = {
                     common = {
                         "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
@@ -71,7 +71,7 @@
                         "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
                         "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
                         "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
-                        
+
                         default = [ "hyprland" "gtk" ];
                     };
                 };

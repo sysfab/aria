@@ -24,7 +24,7 @@
                 pkg-config
                 libxkbcommon
                 libgcc
-                gccNGPackages_15.libstdcxx 
+                gccNGPackages_15.libstdcxx
                 zstd
                 stdenv.cc.cc
                 curl

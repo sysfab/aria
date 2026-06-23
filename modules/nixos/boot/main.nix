@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    flake.nixosModules.boot = { pkgs, ... }: {
+    flake.nixosModules.boot = { ... }: {
         boot = {
             loader = {
                 grub = {

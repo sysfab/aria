@@ -1,4 +1,4 @@
-{ moduleWithSystem, ... }: 
+{ moduleWithSystem, ... }:
 
 {
     flake.nixosModules.desktop = moduleWithSystem (
@@ -9,7 +9,7 @@
             programs.dconf.enable = true;
 
             environment.systemPackages = with pkgs; [
-                #utils, libs
+                # utils, libs
                 gsettings-desktop-schemas
                 glib
                 virtiofsd
@@ -19,13 +19,13 @@
                 pulseaudio
                 wl-clipboard
 
-                #themes
+                # themes
                 adw-gtk3
                 adwaita-icon-theme
                 papirus-icon-theme
                 gnome-themes-extra
 
-                #packages
+                # packages
                 awww
                 hyprshot
                 hyprshutdown
@@ -35,9 +35,13 @@
                 decibels
                 loupe
                 gnome-system-monitor
-                zed-editor
 
-                #wrapped packages
+                # zed
+                zed-editor
+                nixd
+                nil
+
+                # wrapped packages
                 perSystem.self'.packages.waybar
                 perSystem.self'.packages.swaync
                 perSystem.self'.packages.rofi

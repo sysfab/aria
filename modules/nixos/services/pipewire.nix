@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    flake.nixosModules.pipewire = { pkgs, ... }: {
+    flake.nixosModules.pipewire = { ... }: {
         security.rtkit.enable = true;
         services.pipewire = {
             enable = true;

@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    flake.homeModules.gtk = { config, pkgs, ... }: {
+    flake.homeModules.gtk = { ... }: {
         xdg.config.files."gtk-4.0/gtk.css".text = ''
             /* --- Main Window --- */
             :root {
@@ -15,7 +15,7 @@
                 --window-border: none;
             }
             window { background-color: #000000; }
-            
+
             /* The container of the menu */
             popover > contents {
                 background-color: #000000;

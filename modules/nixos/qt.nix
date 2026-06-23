@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    flake.nixosModules.qt = { pkgs, ... }: {
+    flake.nixosModules.qt = { ... }: {
         qt = {
             enable = true;
             style = "adwaita-dark";

@@ -16,6 +16,6 @@
         cursor-path = ./assets/Moga-Cursor/Moga-Cursor;
     in
     {
-        files.".icons/default".source = cursor-path; 
+        files.".icons/default".source = cursor-path;
     };
 }

@@ -1,6 +1,6 @@
 start_cmd(
     "dbus-update-activation-environment --systemd --all",
-    
+
     -- daemons
     "awww-daemon",
 

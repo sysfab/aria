@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    flake.nixosModules.network-manager = { pkgs, ... }: {
+    flake.nixosModules.network-manager = { ... }: {
         networking.networkmanager.enable = true;
         systemd.services.NetworkManager-wait-online.enable = false;
     };
