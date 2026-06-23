@@ -1,4 +1,4 @@
-options="Change wallpaper\nPower"
+options="Power\nChange wallpaper"
 
 choice=$(printf "$options" | rofi -dmenu -i -p "Picker")
 
