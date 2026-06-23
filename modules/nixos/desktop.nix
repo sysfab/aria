@@ -35,13 +35,13 @@
                 decibels
                 loupe
                 gnome-system-monitor
+                zed-editor
 
                 #wrapped packages
                 perSystem.self'.packages.waybar
                 perSystem.self'.packages.swaync
                 perSystem.self'.packages.rofi
                 perSystem.self'.packages.foot
-                perSystem.self'.packages.vscodium
             ];
         }
     );

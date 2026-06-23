@@ -1,0 +1,150 @@
+{
+    "relative_line_numbers": "disabled",
+    "gutter": {
+        "min_line_number_digits": 2,
+        "bookmarks": false,
+        "line_numbers": true,
+        "breakpoints": false,
+        "runnables": false,
+    },
+    "inline_code_actions": false,
+    "toolbar": {
+        "agent_review": false,
+        "quick_actions": false,
+        "code_actions": false,
+    },
+    "global_lsp_settings": {
+        "button": true,
+    },
+    "git": {
+        "inline_blame": {
+            "enabled": true,
+        },
+        "git_gutter": "tracked_files",
+        "enable_diff": true,
+        "enable_status": true,
+        "disable_git": false,
+    },
+    "disable_ai": true,
+    "agent": {
+        "button": false,
+        "favorite_models": [],
+        "model_parameters": [],
+    },
+    "collaboration_panel": {
+        "button": false,
+    },
+    "git_panel": {
+        "button": false,
+    },
+    "outline_panel": {
+        "file_icons": true,
+        "folder_icons": true,
+        "button": false,
+    },
+    "zoomed_padding": true,
+    "active_pane_modifiers": {
+        "border_size": 0.0,
+        "inactive_opacity": 1.0,
+    },
+    "use_system_window_tabs": false,
+    "bottom_dock_layout": "contained",
+    "preview_tabs": {
+        "enable_preview_from_project_panel": true,
+        "enabled": true,
+    },
+    "tabs": {
+        "show_close_button": "hover",
+        "close_position": "right",
+        "file_icons": false,
+        "git_status": false,
+    },
+    "tab_bar": {
+        "show_pinned_tabs_in_separate_row": false,
+        "show_tab_bar_buttons": false,
+        "show_nav_history_buttons": false,
+        "show": true,
+    },
+    "title_bar": {
+        "button_layout": "platform_default",
+        "show_menus": false,
+        "show_user_picture": false,
+        "show_user_menu": false,
+        "show_sign_in": false,
+        "show_onboarding_banner": false,
+        "show_project_items": true,
+        "show_branch_status_icon": false,
+        "show_branch_name": true,
+    },
+    "project_panel": {
+        "auto_open": {
+            "on_paste": false,
+            "on_create": true,
+        },
+        "hide_hidden": false,
+        "hide_root": true,
+        "git_status_indicator": false,
+        "indent_guides": {
+            "show": "always",
+        },
+        "scrollbar": {
+            "horizontal_scroll": false,
+        },
+        "bold_folder_labels": false,
+        "starts_open": true,
+        "file_icons": true,
+        "folder_icons": false,
+        "hide_gitignore": false,
+        "entry_spacing": "comfortable",
+        "dock": "left",
+        "button": false,
+    },
+    "status_bar": {
+        "active_language_button": true,
+        "cursor_position_button": true,
+    },
+    "debugger": {
+        "save_breakpoints": true,
+        "dock": "bottom",
+        "button": false,
+    },
+    "diagnostics": {
+        "button": false,
+    },
+    "terminal": {
+        "button": false,
+    },
+    "search": {
+        "button": false,
+    },
+    "sticky_scroll": {
+        "enabled": false,
+    },
+    "extend_comment_on_newline": true,
+    "middle_click_paste": false,
+    "text_rendering_mode": "platform_default",
+    "buffer_line_height": "comfortable",
+    "auto_update": false,
+    "restore_on_startup": "empty_tab",
+    "cli_default_open_behavior": "new_window",
+    "base_keymap": "VSCode",
+    "mouse_wheel_zoom": true,
+    "minimap": {
+        "show": "never",
+    },
+    "cursor_blink": true,
+    "hard_tabs": false,
+    "tab_size": 4,
+    "session": {
+        "trust_all_worktrees": true,
+    },
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
+        "anthropic_retention": false,
+    },
+    "icon_theme": "Zed (Default)",
+    "ui_font_size": 16,
+    "buffer_font_size": 15,
+    "theme": "One Dark",
+}
