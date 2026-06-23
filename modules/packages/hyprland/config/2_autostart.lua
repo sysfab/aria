@@ -4,6 +4,7 @@ start_cmd(
     -- daemons
     "awww-daemon",
 
+    "foot -s",
     "pkill swaync; swaync",
     "pkill waybar; waybar",
 

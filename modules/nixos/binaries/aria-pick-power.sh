@@ -4,13 +4,13 @@ choice=$(printf "$options" | rofi -dmenu -i -p "Power")
 
 case "$choice" in
     Shutdown)
-        systemctl poweroff
+        hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'
         ;;
     Reboot)
-        systemctl reboot
+        hyprshutdown -t 'Restarting...' --post-cmd 'reboot'
         ;;
     Logout)
-        loginctl terminate-user "$USER"
+        hyprshutdown -t 'Loggining off...'
         ;;
     *)
         exit 1

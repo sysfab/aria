@@ -28,9 +28,10 @@
                 #packages
                 awww
                 hyprshot
+                hyprshutdown
                 nautilus
                 pavucontrol
-                coppwr
+                qpwgraph
                 decibels
                 loupe
                 gnome-system-monitor

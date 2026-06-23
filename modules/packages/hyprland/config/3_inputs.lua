@@ -15,11 +15,13 @@ config({
 local MAIN_MOD = "SUPER"
 
 
-bind({MAIN_MOD, "Q"}, cmd("foot"))
+bind({MAIN_MOD, "Q"}, cmd("footclient"))
 bind({MAIN_MOD, "E"}, cmd("nautilus"))
 
 bind({MAIN_MOD, "R"},          cmd("pkill rofi || rofi -show drun"))
 bind({MAIN_MOD, "SHIFT", "R"}, cmd("aria-picker"))
+
+bind({MAIN_MOD, "F"}, window.tag({ tag = "no_share" }))
 
 bind({MAIN_MOD, "C"},          window.close())
 bind({MAIN_MOD, "SHIFT", "C"}, window.kill())

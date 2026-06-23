@@ -68,6 +68,13 @@ window_rules(
     {
         match = { float = true },
         rounding = 10
+    },
+    {
+        match = { tag = "no_share" },
+        no_screen_share = true,
+
+        border_size = 2,
+        border_color = "rgba(ff0000bf) rgba(ff0000bf)",
     }
 )
 
