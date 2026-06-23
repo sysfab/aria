@@ -69,10 +69,10 @@ window_rules(
         match = { float = true },
         rounding = 10
     },
+
     {
         match = { tag = "no_share" },
         no_screen_share = true,
-
         border_size = 2,
         border_color = "rgba(ff0000bf) rgba(ff0000bf)",
     }
@@ -85,13 +85,23 @@ layer_rules(
         ignore_alpha = 0.1
     },
     {
-        match = { namespace = "waybar" },
-        blur = true,
-        ignore_alpha = 0.1
-    },
-    {
         match = { namespace = "swaync-control-center" },
         blur = true,
         ignore_alpha = 0.1
     }
 )
+
+opaque_classes = {
+    "footclient",
+    "org.gnome.Nautilus",
+    "org.gnome.Decibels"
+}
+
+for i, class in pairs(opaque_classes) do
+    window_rules(
+        {
+            match = { class = class },
+            opacity = "0.865",
+        }
+    )
+end
