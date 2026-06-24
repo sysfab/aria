@@ -6,11 +6,6 @@ config({
         gaps_out = 10,
         border_size = 0,
 
-        col = {
-            active_border = "rgba(0,0,0,0.5)",
-            inactive_border = "rgba(0,0,0,0.2)",
-        },
-
         allow_tearing = false,
     },
 
