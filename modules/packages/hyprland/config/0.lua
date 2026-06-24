@@ -52,6 +52,14 @@ window_rules = function(...)
     end
 end
 
+workspace_rules = function( ... )
+    local rules = table.pack(...)
+
+    for i, rule in ipairs(rules) do
+        hl.workspace_rule(rule)
+    end
+end
+
 layer_rules = function(...)
     local rules = table.pack(...)
 
