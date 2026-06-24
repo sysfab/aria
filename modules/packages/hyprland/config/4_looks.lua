@@ -85,7 +85,7 @@ layer_rules(
         ignore_alpha = 0.1
     },
     {
-        match = { namespace = "swaync-control-center" },
+        match = { namespace = "quickshell" },
         blur = true,
         ignore_alpha = 0.1
     }

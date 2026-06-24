@@ -7,7 +7,7 @@
             "/run/current-system/sw/lib/libhypr-dynamic-cursors.so"
         ];
 
-        load-script = pkgs.writeShellScriptBin "aria-load-hyprland-plugins" ''
+        load-script = pkgs.writeShellScriptBin "aria-hyprland-load-plugins" ''
             ${builtins.concatStringsSep "\n" (map (path: ''
                 hyprctl plugin unload ${path} || true
             '') plugin_paths)}
