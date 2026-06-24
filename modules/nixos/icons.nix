@@ -9,8 +9,8 @@
 
             src = pkgs.fetchgit {
                 url = "https://bitbucket.org/dirn-typo/yet-another-monochrome-icon-set.git";
-                rev = "40baf4612a8a73ed0f5a75cdf073db476aa3ca99";
-                sha256 = "sha256-bBCwWzPf7k7a3RwP4L90xeTwk+YkKrS9sxRb9KLnBL4=";
+                rev = "2b3ad4983f1943e2d6c48951d6b6970ca97b4fa5";
+                sha256 = "sha256-rt2oMlGQAM5xKzye8JgEeJY5KQ8DCWseaCZux2zCOGQ=";
             };
 
             installPhase = ''
