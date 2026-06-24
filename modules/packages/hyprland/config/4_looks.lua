@@ -2,8 +2,8 @@ config({
     general = {
         layout = "dwindle",
 
-        gaps_in = 0,
-        gaps_out = 0,
+        gaps_in = 5,
+        gaps_out = 10,
         border_size = 0,
 
         col = {
@@ -19,7 +19,7 @@ config({
     },
 
     decoration = {
-        rounding = 0,
+        rounding = 10,
         rounding_power = 2.0,
 
         active_opacity = 1.0,
@@ -65,11 +65,6 @@ animations(
 )
 
 window_rules(
-    {
-        match = { float = true },
-        rounding = 10
-    },
-
     {
         match = { tag = "no_share" },
         no_screen_share = true,
