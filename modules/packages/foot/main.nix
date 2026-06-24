@@ -9,7 +9,7 @@
 
     flake.homeModules.foot = { ... }: {
         xdg.config.files = {
-            "foot/foot.init".source = ./foot.ini;
+            "foot/foot.ini".source = ./foot.ini;
         };
     };
 }
