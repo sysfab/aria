@@ -4,6 +4,10 @@
 
 config = hl.config
 
+plugin = function(cfg)
+    config({ plugin = cfg })
+end
+
 cmd = hl.dsp.exec_cmd
 window = hl.dsp.window
 layout = hl.dsp.layout

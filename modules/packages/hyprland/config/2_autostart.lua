@@ -8,5 +8,6 @@ start_cmd(
     "pkill swaync; swaync",
     "pkill waybar; waybar",
 
+    "aria-load-hyprland-plugins",
     "aria-update-wallpaper --instant"
 )
