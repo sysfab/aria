@@ -1,15 +1,16 @@
-{ inputs, ... }:
+{ ... }:
 
 {
-    perSystem = { pkgs, ... }: {
-        packages.rofi = inputs.wrappers.lib.wrapPackage {
-            inherit pkgs;
-            package = pkgs.rofi;
+    flake.nixosModules.rofi = { pkgs, ... }: {
+        environment.systemPackages = with pkgs; [
+            rofi
+        ];
+    };
 
-            flags = {
-                "-config" = ./config.rasi;
-                "-theme"  = ./theme.rasi;
-            };
+    flake.homeModules.rofi = { ... }: {
+        xdg.config.files = {
+            "rofi/config.rasi".source = ./config.rasi;
+            "rofi/theme.rasi".source = ./theme.rasi;
         };
     };
 }

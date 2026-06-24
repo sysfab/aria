@@ -35,17 +35,6 @@
                 decibels
                 loupe
                 gnome-system-monitor
-
-                # zed
-                zed-editor
-                nixd
-                nil
-
-                # wrapped packages
-                perSystem.self'.packages.waybar
-                perSystem.self'.packages.swaync
-                perSystem.self'.packages.rofi
-                perSystem.self'.packages.foot
             ];
         }
     );

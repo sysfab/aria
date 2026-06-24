@@ -1,15 +1,16 @@
-{ inputs, ... }:
+{ ... }:
 
 {
-    perSystem = { pkgs, ... }: {
-        packages.swaync = inputs.wrappers.lib.wrapPackage {
-            inherit pkgs;
-            package = pkgs.swaynotificationcenter;
+    flake.nixosModules.swaync = { pkgs, ... }: {
+        environment.systemPackages = with pkgs; [
+            swaynotificationcenter
+        ];
+    };
 
-            flags = {
-                "--config" = ./config.json;
-                "--style"  = ./style.css;
-            };
+    flake.homeModules.swaync = { ... }: {
+        xdg.config.files = {
+            "swaync/config.json".source = ./config.json;
+            "swaync/style.css".source = ./style.css;
         };
     };
 }

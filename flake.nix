@@ -3,7 +3,6 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-        wrappers.url = "github:lassulus/wrappers";
 
         hjem = {
             url = "github:feel-co/hjem";

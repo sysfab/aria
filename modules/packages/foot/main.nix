@@ -1,14 +1,15 @@
-{ inputs, ... }:
+{ ... }:
 
 {
-    perSystem = { pkgs, ... }: {
-        packages.foot = inputs.wrappers.lib.wrapPackage {
-            inherit pkgs;
-            package = pkgs.foot;
+    flake.nixosModules.foot = { pkgs, ... }: {
+        environment.systemPackages = with pkgs; [
+            foot
+        ];
+    };
 
-            flags = {
-                "--config" = ./foot.ini;
-            };
+    flake.homeModules.foot = { ... }: {
+        xdg.config.files = {
+            "foot/foot.init".source = ./foot.ini;
         };
     };
 }

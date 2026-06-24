@@ -1,15 +1,16 @@
-{ inputs, ... }:
+{ ... }:
 
 {
-    perSystem = { pkgs, ... }: {
-        packages.waybar = inputs.wrappers.lib.wrapPackage {
-            inherit pkgs;
-            package = pkgs.waybar;
+    flake.nixosModules.waybar = { pkgs, ... }: {
+        environment.systemPackages = with pkgs; [
+            waybar
+        ];
+    };
 
-            flags = {
-                "--config" = ./config.jsonc;
-                "--style"  = ./style.css;
-            };
+    flake.homeModules.waybar = { ... }: {
+        xdg.config.files = {
+            "waybar/config.jsonc".source = ./config.jsonc;
+            "waybar/style.css".source = ./style.css;
         };
     };
 }
