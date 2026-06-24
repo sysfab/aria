@@ -8,7 +8,7 @@ plugin({
 
         mode = "tilt",
         tilt = {
-            full = 30,
+            full = 15,
         },
 
         shake = {
