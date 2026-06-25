@@ -23,7 +23,6 @@ const colors = {
 
     text1: "#ffffff",
     text2: "#c8c8c8",
-
 };
 
 //

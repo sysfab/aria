@@ -37,8 +37,8 @@ Scope {
                 screen: screen_root.modelData
                 visible: root.barShowed
 
-                anchors { bottom: true; left: true; right: true }
                 implicitHeight: Config.bar.height
+                anchors { bottom: true; left: true; right: true }
                 color: Config.colors.bg1
 
                 C.AText {
