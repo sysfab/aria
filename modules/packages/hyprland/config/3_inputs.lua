@@ -22,6 +22,7 @@ bind({MAIN_MOD, "R"},          cmd("pkill rofi || rofi -show drun"))
 bind({ MAIN_MOD, "SHIFT", "R" }, cmd("aria-picker"))
 
 bind({MAIN_MOD, "N"}, cmd("aria-shell notifications toggle"))
+bind({MAIN_MOD, "B"}, cmd("aria-shell bar toggle"))
 
 bind({MAIN_MOD, "F"}, window.tag({ tag = "no_share" })) -- toggles
 bind({MAIN_MOD, "V"}, window.float({ action = "toggle" }))

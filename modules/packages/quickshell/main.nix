@@ -8,7 +8,7 @@
         '';
 
         ipc = pkgs.writeShellScriptBin "aria-shell" ''
-            qs -p $XDG_CONFIG_HOME/aria-shell ipc call "$@"
+            qs -p $XDG_CONFIG_HOME/aria-shell ipc call -- "$@"
         '';
     in
     {

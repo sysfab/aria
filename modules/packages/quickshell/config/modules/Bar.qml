@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Io
 import Quickshell.Wayland
 import Quickshell.Services.SystemTray
 import QtQuick
@@ -6,76 +7,89 @@ import QtQuick
 import '../components' as C
 import '../config.js' as Config
 
-Variants {
-    model: Quickshell.screens
+Scope {
+    id: root
+    property bool barShowed: true
 
-    Scope {
-        id: root
-        required property var modelData //screen
+    IpcHandler {
+        target: "bar"
+        function toggle(): void { root.barShowed = !root.barShowed }
+        function show(): void { root.barShowed = true }
+        function hide(): void { root.barShowed = false }
+    }
 
-        SystemClock {
-            id: clock
-            precision: SystemClock.Seconds
-        }
+    Variants {
+        model: Quickshell.screens
 
-        //
-        // Bar
-        //
-        PanelWindow {
-            screen: root.modelData
+        Scope {
+            id: screen_root
+            required property var modelData //screen
 
-            anchors { bottom: true; left: true; right: true }
-            implicitHeight: Config.bar.height
-            color: Config.colors.bg1
-
-            C.AText {
-                anchors.centerIn: parent
-                text: Qt.formatDateTime(clock.date, "hh:mm:ss")
-                color: Config.colors.text1
+            SystemClock {
+                id: clock
+                precision: SystemClock.Seconds
             }
 
-            Row {
-                anchors {
-                    left: parent.left
-                    leftMargin: 10
-                    verticalCenter: parent.verticalCenter
+            //
+            // Bar
+            //
+            PanelWindow {
+                screen: screen_root.modelData
+                visible: root.barShowed
+
+                anchors { bottom: true; left: true; right: true }
+                implicitHeight: Config.bar.height
+                color: Config.colors.bg1
+
+                C.AText {
+                    anchors.centerIn: parent
+                    text: Qt.formatDateTime(clock.date, "hh:mm:ss")
+                    color: Config.colors.text1
                 }
-                spacing: Config.bar.tray.spacing
 
-                Repeater {
-                    model: SystemTray.items
-                    delegate: Item {
-                        id: trayItem
-                        required property SystemTrayItem modelData
+                Row {
+                    anchors {
+                        left: parent.left
+                        leftMargin: 10
+                        verticalCenter: parent.verticalCenter
+                    }
+                    spacing: Config.bar.tray.spacing
 
-                        width: Config.bar.tray.size
-                        height: Config.bar.tray.size
+                    Repeater {
+                        model: SystemTray.items
+                        delegate: Item {
+                            id: trayItem
+                            required property SystemTrayItem modelData
 
-                        Image {
-                            anchors.fill: parent
-                            source: modelData.icon
-                        }
+                            width: Config.bar.tray.size
+                            height: Config.bar.tray.size
 
-                        MouseArea {
-                            anchors.fill: parent
-                            acceptedButtons: Qt.LeftButton | Qt.RightButton
+                            Image {
+                                anchors.fill: parent
+                                source: modelData.icon
+                            }
 
-                            onClicked: e => {
-                                if (e.button === Qt.RightButton) {
-                                    contextMenu.open()
-                                } else {
-                                    trayItem.modelData.activate()
+                            MouseArea {
+                                anchors.fill: parent
+                                acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+                                onClicked: e => {
+                                    if (e.button === Qt.RightButton) {
+                                        contextMenu.open()
+                                    } else {
+                                        trayItem.modelData.activate()
+                                    }
                                 }
                             }
-                        }
 
-                        QsMenuAnchor {
-                            id: contextMenu
-                            menu: trayItem.modelData.menu
+                            QsMenuAnchor {
+                                id: contextMenu
+                                menu: trayItem.modelData.menu
 
-                            anchor {
-                                item: trayItem
-                                edges: Edges.Top
+                                anchor {
+                                    item: trayItem
+                                    edges: Edges.Top
+                                }
                             }
                         }
                     }
