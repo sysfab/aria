@@ -3,9 +3,11 @@ start_cmd(
 
     -- daemons
     "awww-daemon",
-    "foot -s",
 
-    "aria-hyprland-load-plugins",
-    "aria-shell-reload",
+    "foot -s",
+    "pkill swaync; swaync",
+    "pkill waybar; waybar",
+
+    "aria-load-hyprland-plugins",
     "aria-update-wallpaper --instant"
 )
