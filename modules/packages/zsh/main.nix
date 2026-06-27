@@ -4,6 +4,7 @@
     flake.nixosModules.zsh = { ... }: {
         programs.zsh = {
             enable = true;
+            syntaxHighlighting.enable = true;
         };
     };
 
