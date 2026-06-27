@@ -5,9 +5,6 @@
         environment.systemPackages = with pkgs; [
             zip
             unzip
-            bat
-            eza
-            ripgrep
             fd
             jq
             wget

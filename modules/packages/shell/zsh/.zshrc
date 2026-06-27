@@ -1,3 +1,6 @@
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_SAVE_NO_DUPS
@@ -6,17 +9,15 @@ setopt HIST_REDUCE_BLANKS
 #
 # ALIASES
 #
+alias cd='z'
+alias cdi='zi'
+
 alias cat='bat'
 alias catp='bat --plain'
 
 alias ls='eza --long --color=always --no-user --no-permissions'
 
 alias code='zeditor'
-
-#
-# OTHER
-#
-eval "$(starship init zsh)"
 
 #
 # HIGHLIGHING
