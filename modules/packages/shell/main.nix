@@ -10,6 +10,9 @@
         programs.starship = {
             enable = true;
         };
+
+        programs.command-not-found.enable = false;
+        programs.nix-index.enableZshIntegration = false;
     };
 
     flake.homeModules.shell = { ... }: {
