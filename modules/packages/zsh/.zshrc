@@ -1,6 +1,11 @@
-PS1='\[\e[38;5;33m\][\u@\h:\[\e[38;5;39m\]\w\[\e[38;5;33m\]]\$\[\e[0m\] '
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
 
+#
+# ALIASES
+#
 alias cat='bat'
 alias ls='eza --long --color=always --icons=always --no-user --no-permissions'
-alias sd='rg'
 alias code='zeditor'
