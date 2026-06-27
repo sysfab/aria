@@ -49,10 +49,10 @@
         "format": "{icon}",
 
         "format-icons": {
-            "notification": "<span></span>",
-            "none": "<span></span>",
-            "dnd-notification": "<span></span>",
-            "dnd-none": "<span></span>"
+            "notification": "<span></span>",
+            "none": "<span></span>",
+            "dnd-notification": "<span></span>",
+            "dnd-none": "<span></span>"
         },
 
         "return-type": "json",

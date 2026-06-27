@@ -14,14 +14,19 @@ alias ls='eza --long --color=always --no-user --no-permissions'
 alias code='zeditor'
 
 #
+# OTHER
+#
+eval "$(starship init zsh)"
+
+#
 # HIGHLIGHING
 #
 typeset -A ZSH_HIGHLIGHT_STYLES
 
 # Base
 ZSH_HIGHLIGHT_STYLES[default]='fg=#d8dee9'
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#f38ba8,bold'
-ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#cba6f7,bold'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#f38ba8'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#cba6f7'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=#d8dee9'
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=#d8dee9'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=#d8dee9'
@@ -35,7 +40,7 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=#b4befe'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#9399b2'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=#f5c2e7'
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#fab387'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#fab387,bold'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#fab387'
 
 # Strings & quotes
 ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#a6e3a1'
@@ -55,7 +60,7 @@ ZSH_HIGHLIGHT_STYLES[math]='fg=#fab387'
 ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=#f5c2e7'
 
 # History
-ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=#f38ba8,bold'
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=#f38ba8'
 
 # Comments
 ZSH_HIGHLIGHT_STYLES[comment]='fg=#6c7086,italic'
