@@ -24,6 +24,12 @@
         ];
     };
 
+    flake.homeModules.hyprland = { ... }: {
+        xdg.config.files = {
+            "hypr/hyprtoolkit.conf".source = ./hyprtoolkit.conf;
+        };
+    };
+
     flake.mkHyprlandConfig = { extraConfig ? "" }:
         lib.strings.concatStringsSep "\n" (
             (map builtins.readFile (
