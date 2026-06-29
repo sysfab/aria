@@ -24,6 +24,13 @@
         ];
     };
 
+    flake.nixosModules.hyprland = { pkgs, ... }: {
+        environment.systemPackages = with pkgs; [
+            hyprshot
+            hyprshutdown
+        ];
+    };
+
     flake.homeModules.hyprland = { ... }: {
         xdg.config.files = {
             "hypr/hyprtoolkit.conf".source = ./hyprtoolkit.conf;

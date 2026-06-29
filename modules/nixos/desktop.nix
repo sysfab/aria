@@ -24,8 +24,6 @@
 
             # packages
             awww
-            hyprshot
-            hyprshutdown
             nautilus
             pavucontrol
             qpwgraph
