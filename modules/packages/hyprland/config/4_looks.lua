@@ -91,13 +91,7 @@ layer_rules(
     }
 )
 
-opaque_classes = {
-    "footclient",
-    "org.gnome.Nautilus",
-    "org.gnome.Decibels"
-}
-
-for i, class in pairs(opaque_classes) do
+opaque = function(class)
     window_rules(
         {
             match = { class = class },
@@ -105,3 +99,7 @@ for i, class in pairs(opaque_classes) do
         }
     )
 end
+
+opaque("footclient")
+opaque("org.gnome.Nautilus")
+opaque("org.gnome.Decibels")
