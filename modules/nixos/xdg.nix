@@ -11,9 +11,9 @@
                     "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
                     "application/octet-stream" = "org.gnome.Nautilus.desktop";
 
-                    "x-scheme-handler/http" = [ "google-chrome.desktop" ];
-                    "x-scheme-handler/https" = [ "google-chrome.desktop" ];
-                    "text/html" = [ "google-chrome.desktop" ];
+                    "x-scheme-handler/http" = [ "io.github.zen_browser.zen.desktop" ];
+                    "x-scheme-handler/https" = [ "io.github.zen_browser.zen.desktop" ];
+                    "text/html" = [ "io.github.zen_browser.zen.desktop" ];
 
                     "text/plain" = [ "codium.desktop" ];
                     "text/x-python" = [ "codium.desktop" ];

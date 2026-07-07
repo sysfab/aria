@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
     flake.nixosModules.desktop = { pkgs, ... }: {
@@ -30,6 +30,7 @@
             decibels
             loupe
             gnome-system-monitor
+            inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
     };
 }

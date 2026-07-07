@@ -11,6 +11,12 @@
 
         flake-parts.url = "github:hercules-ci/flake-parts";
         import-tree.url = "github:vic/import-tree";
+
+        # other
+        zen-browser = {
+            url = "github:youwen5/zen-browser-flake";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = inputs @ { self, ... }:
