@@ -1,0 +1,182 @@
+/* Color definitions */
+@define-color window_bg_color transparent;
+@define-color accent_bg_color rgba(20, 20, 20, 0.6);
+@define-color theme_fg_color rgb(255, 255, 255);
+@define-color error_bg_color #C34043;
+@define-color error_fg_color #DCD7BA;
+
+* {
+  all: unset;
+  font-family: "Inter";
+  font-size: 20px;
+}
+
+popover {
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 0px;
+  padding: 10px;
+}
+
+scrollbar {
+  opacity: 0;
+}
+
+.box-wrapper {
+  box-shadow: none;
+  background: transparent;
+  padding: 0px;
+  border-radius: 0px;
+  border: none;
+  min-width: 900px;
+  min-height: 500px;
+}
+
+.box {
+  background: transparent;
+}
+
+/* Input bar: rgba(0,0,0,0.8), no radius, 0.5em padding */
+.search-container {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0.5em;
+  min-height: 40px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.input {
+  caret-color: @theme_fg_color;
+  background: transparent;
+  color: @theme_fg_color;
+  padding: 0.5em;
+}
+
+.input placeholder {
+  opacity: 0.5;
+}
+
+.input selection {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.content-container {
+  background: transparent;
+}
+
+.preview-box,
+.elephant-hint,
+.placeholder {
+  color: alpha(@theme_fg_color, 0.6);
+  padding: 1em;
+}
+
+.scroll {
+  background: transparent;
+}
+
+.list {
+  color: @theme_fg_color;
+  background: transparent;
+  border-radius: 0px 0px 10px 10px;
+}
+
+/* List items: rgba(0,0,0,0.6), no radius, 0.5em padding */
+.item-box {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0px;
+  padding: 0.5em;
+  min-height: 40px;
+}
+
+.item-quick-activation {
+  background: alpha(@accent_bg_color, 0.5);
+  border-radius: 0px;
+  padding: 0.4em 0.6em;
+}
+
+child:selected .item-box,
+row:selected .item-box {
+  background: rgba(20, 20, 20, 0.6);
+}
+
+.item-text {
+  color: rgb(230, 230, 230);
+}
+
+.item-subtext {
+  color: rgb(230, 230, 230);
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.providerlist .item-subtext {
+  font-size: unset;
+  opacity: 0.75;
+}
+
+.item-image-text {
+  font-size: 28px;
+  color: @theme_fg_color;
+}
+
+.item-image,
+.item-image-text {
+  opacity: 0;
+  font-size: 0px;
+  -gtk-icon-size: 0px;
+  min-width: 0px;
+  min-height: 0px;
+}
+
+.item-subtext {
+  opacity: 0;
+  font-size: 0px;
+  min-height: 0px;
+}
+
+.preview {
+  border: none;
+  border-radius: 0px;
+  background: rgba(0, 0, 0, 0.6);
+  color: @theme_fg_color;
+}
+
+.calc .item-text {
+  font-size: 24px;
+}
+
+.symbols .item-image {
+  font-size: 24px;
+}
+
+.todo.done .item-text-box {
+  opacity: 0.25;
+}
+
+.todo.urgent {
+  font-size: 24px;
+}
+
+.todo.active {
+  font-weight: bold;
+}
+
+.bluetooth.disconnected {
+  opacity: 0.5;
+}
+
+/* Error bar, e.g. "Theme [aria]: missing 'X' object" */
+.error {
+  padding: 10px;
+  background: @error_bg_color;
+  color: @error_fg_color;
+}
+
+:not(.calc).current {
+  font-style: italic;
+}
+
+.preview-content.archlinuxpkgs,
+.preview-content.dnfpackages {
+  font-family: monospace;
+}

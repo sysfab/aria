@@ -4,9 +4,12 @@ start_cmd(
     -- daemons
     "awww-daemon",
 
+    "elephant",
+    "walker --gapplication-service",
+
     "foot -s",
     "pkill swaync; swaync",
-    "pkill waybar; waybar",
+    "waybar",
 
     "aria-hyprland-load-plugins",
     "aria-update-wallpaper --instant"

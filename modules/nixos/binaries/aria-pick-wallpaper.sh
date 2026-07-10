@@ -7,7 +7,7 @@ choice="$(
 {
     echo "Random wallpaper"
     find -L "$wallpapers" -maxdepth 1 -type f -printf "%f\n"
-} | rofi -dmenu -p Wallpaper
+} | walker --dmenu -p Wallpaper
 )" || exit
 
 [ -z "$choice" ] && exit

@@ -1,6 +1,6 @@
 options="Power\nChange wallpaper"
 
-choice=$(printf "$options" | rofi -dmenu -i -p "Picker")
+choice=$(printf "$options" | walker --dmenu -p "Picker")
 
 case "$choice" in
     Power)

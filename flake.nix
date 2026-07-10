@@ -13,6 +13,10 @@
         import-tree.url = "github:vic/import-tree";
 
         # other
+        walker = {
+            url = "github:abenz1267/walker";
+        };
+
         zen-browser = {
             url = "github:youwen5/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +39,10 @@
                         ({...}: let
                             modules = builtins.attrValues self.homeModules;
                         in {
-                            hjem.extraModules = modules;
+                            hjem = {
+                                extraModules = modules;
+                                clobberByDefault = true;
+                            };
                         })
                     ] ++ (builtins.attrValues self.nixosModules);
                 };

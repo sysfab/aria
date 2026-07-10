@@ -80,7 +80,7 @@ workspace_rules(
 
 layer_rules(
     {
-        match = { namespace = "rofi" },
+        match = { namespace = "walker" },
         blur = true,
         ignore_alpha = 0.1
     },

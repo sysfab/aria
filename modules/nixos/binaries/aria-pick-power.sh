@@ -1,6 +1,6 @@
 options="Shutdown\nReboot\nLogout"
 
-choice=$(printf "$options" | rofi -dmenu -i -p "Power")
+choice=$(printf "$options" | walker --dmenu -p "Power")
 
 case "$choice" in
     Shutdown)
