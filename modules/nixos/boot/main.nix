@@ -9,6 +9,8 @@
 
                     theme = ./grub-theme;
                     splashImage = ./grub-theme/background.jpeg;
+
+                    gfxmodeEfi = "1920x1080";
                 };
 
                 timeout = 1;

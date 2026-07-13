@@ -44,6 +44,9 @@ bind({MAIN_MOD, "down"}, window.fullscreen({ mode = "fullscreen", action = "togg
 bind({MAIN_MOD, "mouse:272"}, window.drag(),   { mouse = true })
 bind({MAIN_MOD, "mouse:273"}, window.resize(), { mouse = true })
 
+bind({MAIN_MOD, "G"}, workspace.toggle_special("Overlay"))
+bind({MAIN_MOD, "SHIFT", "G"}, window.move({ workspace = "special:Overlay" }))
+
 -- Workspaces
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
