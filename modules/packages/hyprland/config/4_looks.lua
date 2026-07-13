@@ -65,6 +65,10 @@ window_rules(
         no_screen_share = true,
         border_size = 2,
         border_color = "rgba(ff0000bf) rgba(ff0000bf)",
+    },
+    {
+        match = { workspace = "special:Overlay" },
+        opacity = "0.8 0.8 1.0",
     }
 )
 

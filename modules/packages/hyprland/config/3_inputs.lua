@@ -42,10 +42,7 @@ bind({MAIN_MOD, "down"}, window.fullscreen({ mode = "fullscreen", action = "togg
 
 -- Move/resize windows
 bind({MAIN_MOD, "mouse:272"}, window.drag(),   { mouse = true })
-bind({MAIN_MOD, "mouse:273"}, window.resize(), { mouse = true })
-
-bind({MAIN_MOD, "G"}, workspace.toggle_special("Overlay"))
-bind({MAIN_MOD, "SHIFT", "G"}, window.move({ workspace = "special:Overlay" }))
+bind({ MAIN_MOD, "mouse:273" }, window.resize(), { mouse = true })
 
 -- Workspaces
 for i = 1, 10 do
