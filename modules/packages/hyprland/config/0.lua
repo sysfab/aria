@@ -20,15 +20,20 @@ env = function(e)
     end
 end
 
+AUTOSTART = {}
 start_cmd = function(...)
-    AUTOSTART = table.pack(...)
+    NEW_AUTOSTART = table.pack(...)
 
-    hl.on("hyprland.start", function()
-        for i, command in ipairs(AUTOSTART) do
-            hl.exec_cmd(command)
-        end
-    end)
+    for i, command in ipairs(NEW_AUTOSTART) do
+        table.insert(AUTOSTART, command)
+    end
 end
+
+hl.on("hyprland.start", function()
+    for i, command in ipairs(AUTOSTART) do
+        hl.exec_cmd(command)
+    end
+end)
 
 bind = function(keybind, action, settings)
     hl.bind(table.concat(keybind, " + "), action, settings)
