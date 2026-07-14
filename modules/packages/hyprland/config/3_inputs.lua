@@ -33,9 +33,7 @@ bind({MAIN_MOD, "G"}, function()
         end
     end
 
-    for i, rule in ipairs(rules_window) do rule:set_enabled(false) end
     for i, rule in ipairs(rules_layer) do rule:set_enabled(false) end
-
     config({
         general = {
             gaps_in = 0,
