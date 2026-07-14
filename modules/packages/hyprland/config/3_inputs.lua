@@ -34,6 +34,7 @@ bind({MAIN_MOD, "G"}, function()
     end
 
     for i, rule in ipairs(rules_layer) do rule:set_enabled(false) end
+    plugin("dynamic_cursors", { enabled = false })
     config({
         general = {
             gaps_in = 0,
@@ -48,6 +49,8 @@ bind({MAIN_MOD, "G"}, function()
         decoration = {
             shadow = { enabled = false },
             blur = { enabled = false },
+            glow = { enabled = false },
+            motion_blur = { enabled = false },
             rounding = 0,
         },
 

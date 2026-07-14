@@ -2,7 +2,7 @@ programs = {}
 
 function add_program(pg)
     if pg.autostart == true then
-        start_cmd(pg.start)
+        autostart(pg.start)
     end
     programs[pg.id] = pg
 end

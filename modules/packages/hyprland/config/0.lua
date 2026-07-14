@@ -5,8 +5,8 @@
 config = hl.config
 get_config = hl.get_config
 
-plugin = function(cfg)
-    config({ plugin = cfg })
+plugin = function(id, cfg)
+    config({ plugin = {[id] = cfg} })
 end
 
 exec_cmd = hl.exec_cmd
@@ -24,7 +24,7 @@ env = function(e)
 end
 
 AUTOSTART = {}
-start_cmd = function(...)
+autostart = function(...)
     NEW_AUTOSTART = table.pack(...)
 
     for i, command in ipairs(NEW_AUTOSTART) do
