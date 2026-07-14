@@ -50,6 +50,10 @@ bind({MAIN_MOD, "G"}, function()
             blur = { enabled = false },
             rounding = 0,
         },
+
+        misc = {
+            disable_autoreload = true,
+        },
     })
 end)
 

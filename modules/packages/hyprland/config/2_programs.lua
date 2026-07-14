@@ -23,7 +23,9 @@ add_programs(
     {
         id = "awww",
         start = "awww-daemon",
+        kill = "pkill awww-daemon",
         autostart = true,
+        kill_on_game = true,
     },
     {
         id = "elephant",
