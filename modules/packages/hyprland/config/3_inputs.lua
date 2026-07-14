@@ -50,7 +50,6 @@ bind({MAIN_MOD, "G"}, function()
             shadow = { enabled = false },
             blur = { enabled = false },
             glow = { enabled = false },
-            motion_blur = { enabled = false },
             rounding = 0,
         },
 
@@ -61,6 +60,8 @@ bind({MAIN_MOD, "G"}, function()
 end)
 
 bind({MAIN_MOD, "Q"}, cmd("footclient"))
+bind({MAIN_MOD, "SHIFT", "Q"}, cmd("foot"))
+
 bind({MAIN_MOD, "E"}, cmd("nautilus"))
 
 bind({MAIN_MOD, "R"},          cmd("walker"))
