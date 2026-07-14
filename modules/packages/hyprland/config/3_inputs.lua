@@ -14,6 +14,46 @@ config({
 
 local MAIN_MOD = "SUPER"
 
+bind({MAIN_MOD, "G"}, function()
+    local game_mode = (get_config("animations.enabled") == false)
+
+    if game_mode then
+        for id, pg in pairs(programs) do
+            if pg.kill_on_game == true then
+                exec_cmd(pg.start)
+            end
+        end
+        exec_cmd("hyprctl reload")
+        return
+    end
+
+    for id, pg in pairs(programs) do
+        if pg.kill_on_game == true then
+            exec_cmd(pg.kill)
+        end
+    end
+
+    for i, rule in ipairs(rules_window) do rule:set_enabled(false) end
+    for i, rule in ipairs(rules_layer) do rule:set_enabled(false) end
+
+    config({
+        general = {
+            gaps_in = 0,
+            gaps_out = 0,
+            border_size = 0,
+        },
+
+        animations = {
+            enabled = false,
+        },
+
+        decoration = {
+            shadow = { enabled = false },
+            blur = { enabled = false },
+            rounding = 0,
+        },
+    })
+end)
 
 bind({MAIN_MOD, "Q"}, cmd("footclient"))
 bind({MAIN_MOD, "E"}, cmd("nautilus"))

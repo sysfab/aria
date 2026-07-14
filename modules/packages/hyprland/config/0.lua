@@ -3,12 +3,15 @@
 --
 
 config = hl.config
+get_config = hl.get_config
 
 plugin = function(cfg)
     config({ plugin = cfg })
 end
 
+exec_cmd = hl.exec_cmd
 cmd = hl.dsp.exec_cmd
+
 window = hl.dsp.window
 layout = hl.dsp.layout
 focus = hl.dsp.focus
@@ -53,11 +56,12 @@ animations = function(...)
     end
 end
 
+rules_window = {}
 window_rules = function(...)
     local rules = table.pack(...)
 
     for i, rule in ipairs(rules) do
-        hl.window_rule(rule)
+        table.insert(rules_window, hl.window_rule(rule))
     end
 end
 
@@ -69,10 +73,11 @@ workspace_rules = function( ... )
     end
 end
 
+rules_layer = {}
 layer_rules = function(...)
     local rules = table.pack(...)
 
     for i, rule in ipairs(rules) do
-        hl.layer_rule(rule)
+        table.insert(rules_layer, hl.layer_rule(rule))
     end
 end
