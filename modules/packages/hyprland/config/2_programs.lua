@@ -30,7 +30,9 @@ add_programs(
     {
         id = "elephant",
         start = "elephant",
+        kill = "pkill elephant",
         autostart = true,
+        kill_on_game = true,
     },
     {
         id = "walker",
@@ -49,6 +51,7 @@ add_programs(
         start = "pkill swaync; swaync",
         kill = "pkill swaync",
         autostart = true,
+        kill_on_game = true,
     },
     {
         id = "waybar",

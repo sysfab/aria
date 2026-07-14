@@ -53,6 +53,10 @@ bind({MAIN_MOD, "G"}, function()
             rounding = 0,
         },
 
+        render = {
+            xp_mode = true,
+        },
+
         misc = {
             disable_autoreload = true,
         },
