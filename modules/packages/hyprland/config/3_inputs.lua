@@ -33,7 +33,7 @@ bind({MAIN_MOD, "G"}, function()
         end
     end
 
-    for i, rule in ipairs(rules_layer) do rule:set_enabled(false) end
+    for i, rule in ipairs(LAYER_RULES) do rule:set_enabled(false) end
     plugin("dynamic_cursors", { enabled = false })
     config({
         general = {

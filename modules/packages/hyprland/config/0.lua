@@ -6,8 +6,15 @@ config = hl.config
 get_config = hl.get_config
 
 plugin = function(id, cfg)
-    config({ plugin = {[id] = cfg} })
+    config({ plugin = { [id] = cfg } })
 end
+
+env = function(e)
+    for key, value in pairs(e) do
+        hl.env(key, value)
+    end
+end
+
 
 exec_cmd = hl.exec_cmd
 cmd = hl.dsp.exec_cmd
@@ -17,11 +24,6 @@ layout = hl.dsp.layout
 focus = hl.dsp.focus
 workspace = hl.dsp.workspace
 
-env = function(e)
-    for key, value in pairs(e) do
-        hl.env(key, value)
-    end
-end
 
 AUTOSTART = {}
 autostart = function(...)
@@ -38,9 +40,35 @@ hl.on("hyprland.start", function()
     end
 end)
 
+
+MONITORS = {}
+DEFAULT_MONITOR = nil
+monitors = function(mons)
+    for monitor, settings in pairs(mons) do
+        local hl_mon = hl.monitor({
+            output = monitor,
+            mode = settings.mode,
+            position = settings.position,
+            scale = settings.scale,
+        })
+
+        MONITORS[monitor] = hl_mon
+        if settings.default == true then
+            DEFAULT_MONITOR = hl_mon
+            config({
+                cursor = {
+                    default_monitor = monitor
+                }
+            })
+        end
+    end
+end
+
+
 bind = function(keybind, action, settings)
     hl.bind(table.concat(keybind, " + "), action, settings)
 end
+
 
 curves = function(_curves)
     for name, curve in pairs(_curves) do
@@ -56,12 +84,13 @@ animations = function(...)
     end
 end
 
-rules_window = {}
+
+WINDOW_RULES = {}
 window_rules = function(...)
     local rules = table.pack(...)
 
     for i, rule in ipairs(rules) do
-        table.insert(rules_window, hl.window_rule(rule))
+        table.insert(WINDOW_RULES, hl.window_rule(rule))
     end
 end
 
@@ -73,11 +102,11 @@ workspace_rules = function( ... )
     end
 end
 
-rules_layer = {}
+LAYER_RULES = {}
 layer_rules = function(...)
     local rules = table.pack(...)
 
     for i, rule in ipairs(rules) do
-        table.insert(rules_layer, hl.layer_rule(rule))
+        table.insert(LAYER_RULES, hl.layer_rule(rule))
     end
 end
