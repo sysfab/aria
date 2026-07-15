@@ -1,69 +1,167 @@
-programs = {}
+--
+-- Programs API
+--
+Programs = setmetatable({
+    Registered = {},
+    Get = function(self, id) return self.Registered[id] end,
+    ForEach = function(self, func)
+        for _, program in pairs(self.Registered) do
+            func(program)
+        end
+    end,
 
-function add_program(pg)
-    if pg.autostart == true then
-        autostart(pg.start)
+    Register = function(self, ...)
+        for _, program in ipairs({ ... }) do
+            program.ForCommand = function(_, func)
+                for name, command in pairs(_.commands) do
+                    func(name, command)
+                end
+            end
+
+            program.ForTaggedCommand = function(_, tag, func)
+                _:ForCommand(function(name, command)
+                    if type(command.tags) == "table" then
+                        if command.tags[tag] == true then
+                            func(name, command)
+                        end
+                    end
+                end)
+            end
+
+            program:ForCommand(function(name, command)
+                program[ToPascalCase(name)] = function() cmd(command[1]) end
+            end)
+
+            self.Registered[program.id] = program
+        end
     end
-    programs[pg.id] = pg
-end
-
-function add_programs(...)
-    pgs = table.pack(...)
-    for i, pg in ipairs(pgs) do
-        add_program(pg)
+}, {
+    __call = function(self, id)
+        return self:Get(id)
     end
-end
+})
 
-add_programs(
+-- Default programs
+Programs:Register(
     {
         id = "dbus-env",
-        start = "dbus-update-activation-environment --systemd --all",
-        autostart = true,
+        commands = {
+            start = {
+                "dbus-update-activation-environment --systemd --all",
+                tags = { "autostart" },
+            }
+        },
     },
     {
-        id = "awww",
-        start = "awww-daemon",
-        kill = "pkill awww-daemon",
-        autostart = true,
-        kill_on_game = true,
+        id = "aria-plugins",
+        commands = {
+            start = {
+                "aria-hyprland-load-plugins",
+                tags = { "autostart" },
+            }
+        },
     },
+    {
+        id = "aria-wallpapers",
+        commands = {
+            start = {
+                "awww-daemon & sleep 0.001; aria-update-wallpaper --instant",
+                tags = { "autostart", "on_gamemode_exit" },
+            },
+            kill = {
+                "pkill awww-daemon",
+                tags = { "on_gamemode_enter" }
+            }
+        },
+    },
+
     {
         id = "elephant",
-        start = "elephant",
-        kill = "pkill elephant",
-        autostart = true,
-        kill_on_game = true,
+        commands = {
+            start = {
+                "elephant",
+                tags = { "autostart", "on_gamemode_exit" },
+            },
+            kill = {
+                "pkill elephant",
+                tags = { "on_gamemode_enter" }
+            }
+        },
     },
     {
         id = "walker",
-        start = "walker --gapplication-service",
-        kill = "pkill walker",
-        autostart = true,
-        kill_on_game = true,
-    },
-    {
-        id = "foot",
-        start = "foot -s",
-        autostart = true,
-    },
-    {
-        id = "swaync",
-        start = "pkill swaync; swaync",
-        kill = "pkill swaync",
-        autostart = true,
-        kill_on_game = true,
-    },
-    {
-        id = "waybar",
-        start = "waybar",
-        kill = "pkill waybar",
-        autostart = true,
-        kill_on_game = true,
+        commands = {
+            start = {
+                "walker --gapplication-service",
+                tags = { "autostart", "on_gamemode_exit" },
+            },
+            kill = {
+                "pkill walker",
+                tags = { "on_gamemode_enter" }
+            }
+        },
     },
 
     {
-        id = "aria",
-        start = "aria-hyprland-load-plugins; aria-update-wallpaper --instant",
-        autostart = true,
+        id = "foot-server",
+        commands = {
+            start = {
+                "foot -s",
+                tags = { "autostart", "on_gamemode_exit" },
+            },
+            kill = {
+                "pkill foot",
+                tags = { "on_gamemode_enter" }
+            }
+        },
+    },
+
+    {
+        id = "swaync",
+        commands = {
+            start = {
+                "pkill swaync; swaync",
+                tags = { "autostart", "on_gamemode_exit" },
+            },
+            kill = {
+                "pkill swaync",
+                tags = { "on_gamemode_enter" }
+            }
+        },
+    },
+    {
+        id = "waybar",
+        commands = {
+            start = {
+                "waybar",
+                tags = { "autostart", "on_gamemode_exit" },
+            },
+            kill = {
+                "pkill waybar",
+                tags = { "on_gamemode_enter" }
+            }
+        },
     }
 )
+
+--
+-- Autostart API
+--
+AUTOSTART = {}
+Autostart = function(...)
+    for i, command in ipairs({...}) do
+        table.insert(AUTOSTART, command)
+    end
+end
+
+hl.on("hyprland.start", function()
+    for i, command in ipairs(AUTOSTART) do
+        hl.exec_cmd(command)
+    end
+
+    Programs:ForEach(function(program)
+        program:ForTaggedCommand("autostart", function(command)
+            exec_cmd(command[1])
+        end)
+    end)
+end)

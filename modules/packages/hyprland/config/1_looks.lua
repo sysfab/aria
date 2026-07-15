@@ -1,4 +1,4 @@
-config({
+Config({
     general = {
         layout = "dwindle",
 
@@ -32,7 +32,7 @@ config({
     },
 })
 
-curves({
+Curves({
     easeOutQuint = {type = "bezier", points = {{0.23,1}, {0.32,1}}},
     easeInOutCubic = {type = "bezier", points = {{0.65,0.05}, {0.36,1}}},
     linear = {type = "bezier", points = {{0,0}, {1,1}}},
@@ -40,7 +40,7 @@ curves({
     quick = {type = "bezier", points = {{0.15,0}, {0.1,1}}},
 })
 
-animations(
+Animations(
     {leaf = "global", speed = 10, bezier = "default", enabled = true},
     {leaf = "windows", speed = 4.79, bezier = "easeOutQuint", enabled = true},
     {leaf = "windowsIn", speed = 4.1, bezier = "easeOutQuint", style = "popin 85%", enabled = true},
@@ -59,7 +59,7 @@ animations(
     {leaf = "workspacesOut", speed = 1.94, bezier = "almostLinear", style = "fade", enabled = true}
 )
 
-window_rules(
+WindowRules(
     {
         match = { tag = "no_share" },
         no_screen_share = true,
@@ -68,7 +68,7 @@ window_rules(
     }
 )
 
-workspace_rules(
+WorkspaceRules(
     {
         workspace = "w[tv1]",
         gaps_in = 0,
@@ -78,7 +78,7 @@ workspace_rules(
     }
 )
 
-layer_rules(
+LayerRules(
     {
         match = { namespace = "walker" },
         blur = true,
@@ -92,7 +92,7 @@ layer_rules(
 )
 
 opaque = function(class)
-    window_rules(
+    WindowRules(
         {
             match = { class = class },
             opacity = "0.865",
