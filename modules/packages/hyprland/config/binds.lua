@@ -6,12 +6,12 @@ LMB = "mouse:272"
 RMB = "mouse:273"
 
 Binds(
-    { { SUPER, "Q" },         cmd("footclient") },
-    { { SUPER, SHIFT, "Q" },  cmd("foot") },
+    { { SUPER, "Q" },         Programs("foot").Client },
+    { { SUPER, SHIFT, "Q" },  Programs("foot").Standalone },
 
-    { { SUPER, "E" },         cmd("nautilus") },
+    { { SUPER, "E" },         Programs("nautilus").Start },
 
-    { { SUPER, "R" },         cmd("walker") },
+    { { SUPER, "R" },         Programs("walker").Start },
     { { SUPER, SHIFT, "R" },  cmd("aria-picker") },
 
     { { SUPER, "F" },         window.tag({ tag = "no_share" }) },
@@ -26,9 +26,9 @@ Binds(
     { { SUPER, "S" },         layout("rotatesplit") },
     { { SUPER, "D" },         layout("swapsplit") },
 
-    { { "",    "PRINT" },     cmd("hyprshot -m region --freeze") },
-    { { SHIFT, "PRINT" },     cmd("hyprshot -m window --freeze") },
-    { { CTRL,  "PRINT" },     cmd("hyprshot -m output --freeze") },
+    { { "",    "PRINT" },     Programs("hyprshot").Region },
+    { { SHIFT, "PRINT" },     Programs("hyprshot").Window },
+    { { CTRL,  "PRINT" },     Programs("hyprshot").Screen },
 
     { { SUPER, "left" },      window.move({ direction = "left" }) },
     { { SUPER, "right" },     window.move({ direction = "right" }) },

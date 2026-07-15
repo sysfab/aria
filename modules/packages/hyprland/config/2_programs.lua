@@ -21,15 +21,17 @@ Programs = setmetatable({
             program.ForTaggedCommand = function(_, tag, func)
                 _:ForCommand(function(name, command)
                     if type(command.tags) == "table" then
-                        if command.tags[tag] == true then
-                            func(name, command)
+                        for _, ctag in ipairs(command.tags) do
+                            if ctag == tag then
+                                func(name, command)
+                            end
                         end
                     end
                 end)
             end
 
             program:ForCommand(function(name, command)
-                program[ToPascalCase(name)] = function() cmd(command[1]) end
+                program[ToPascalCase(name)] = function() exec_cmd(command[1]) end
             end)
 
             self.Registered[program.id] = program
@@ -46,7 +48,7 @@ Programs:Register(
     {
         id = "dbus-env",
         commands = {
-            start = {
+            _ = {
                 "dbus-update-activation-environment --systemd --all",
                 tags = { "autostart" },
             }
@@ -55,7 +57,7 @@ Programs:Register(
     {
         id = "aria-plugins",
         commands = {
-            start = {
+            _ = {
                 "aria-hyprland-load-plugins",
                 tags = { "autostart" },
             }
@@ -64,7 +66,7 @@ Programs:Register(
     {
         id = "aria-wallpapers",
         commands = {
-            start = {
+            daemon = {
                 "awww-daemon & sleep 0.001; aria-update-wallpaper --instant",
                 tags = { "autostart", "on_gamemode_exit" },
             },
@@ -78,7 +80,7 @@ Programs:Register(
     {
         id = "elephant",
         commands = {
-            start = {
+            daemon = {
                 "elephant",
                 tags = { "autostart", "on_gamemode_exit" },
             },
@@ -91,9 +93,12 @@ Programs:Register(
     {
         id = "walker",
         commands = {
-            start = {
+            daemon = {
                 "walker --gapplication-service",
                 tags = { "autostart", "on_gamemode_exit" },
+            },
+            start = {
+                "walker"
             },
             kill = {
                 "pkill walker",
@@ -103,11 +108,17 @@ Programs:Register(
     },
 
     {
-        id = "foot-server",
+        id = "foot",
         commands = {
-            start = {
+            daemon = {
                 "foot -s",
                 tags = { "autostart", "on_gamemode_exit" },
+            },
+            client = {
+                "footclient"
+            },
+            standalone = {
+                "foot"
             },
             kill = {
                 "pkill foot",
@@ -119,7 +130,7 @@ Programs:Register(
     {
         id = "swaync",
         commands = {
-            start = {
+            daemon = {
                 "pkill swaync; swaync",
                 tags = { "autostart", "on_gamemode_exit" },
             },
@@ -141,6 +152,23 @@ Programs:Register(
                 tags = { "on_gamemode_enter" }
             }
         },
+    },
+
+    {
+        id = "hyprshot",
+        commands = {
+            region = { "hyprshot -m region --freeze" },
+            window = { "hyprshot -m window --freeze" },
+            screen = { "hyprshot -m output --freeze" }
+        }
+    },
+
+    {
+        id = "nautilus",
+        commands = {
+            start = { "nautilus" },
+            kill = { "pkill nautilus" }
+        }
     }
 )
 
@@ -161,7 +189,7 @@ hl.on("hyprland.start", function()
 
     Programs:ForEach(function(program)
         program:ForTaggedCommand("autostart", function(command)
-            exec_cmd(command[1])
+            hl.exec_cmd(command[1])
         end)
     end)
 end)
