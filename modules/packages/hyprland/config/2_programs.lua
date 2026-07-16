@@ -188,7 +188,7 @@ hl.on("hyprland.start", function()
     end
 
     Programs:ForEach(function(program)
-        program:ForTaggedCommand("autostart", function(command)
+        program:ForTaggedCommand("autostart", function(_, command)
             hl.exec_cmd(command[1])
         end)
     end)
