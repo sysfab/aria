@@ -95,6 +95,17 @@ end
 
 
 -- Helpers
+function JoinStrings(strings, sep)
+    sep = sep or " "
+    local result = {}
+
+    for i, el in ipairs(strings) do
+        result[i] = tostring(el)
+    end
+
+    return table.concat(result, sep)
+end
+
 function ToPascalCase(str)
     return (str:gsub("(%a)([%w_]*)", function(first, rest)
         return first:upper() .. rest:lower()
