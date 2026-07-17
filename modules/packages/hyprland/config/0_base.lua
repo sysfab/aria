@@ -47,6 +47,12 @@ Monitors = function(monitors)
         end
     end
 end
+hl.monitor({
+    output = "",
+    mode = "preferred",
+    position = "auto",
+    scale = 1,
+})
 
 
 Bind = function(keybind, action, settings)
