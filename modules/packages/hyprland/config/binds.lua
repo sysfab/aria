@@ -12,7 +12,7 @@ Binds(
     { { SUPER, "E" },         Programs("nautilus").Start },
 
     { { SUPER, "R" },         Programs("walker").Start },
-    { { SUPER, SHIFT, "R" },  cmd("aria-picker") },
+    { { SUPER, SHIFT, "R" },  Programs("aria").Picker },
 
     { { SUPER, "F" },         window.tag({ tag = "no_share" }) },
     { { SUPER, "V" },         window.float({ action = "toggle" }) },

@@ -54,13 +54,15 @@ Programs:Register(
             }
         },
     },
+
     {
-        id = "aria-plugins",
+        id = "aria",
         commands = {
-            _ = {
+            load_plugins = {
                 "aria-hyprland-load-plugins",
                 tags = { "autostart" },
-            }
+            },
+            picker = { "aria-picker" },
         },
     },
     {
