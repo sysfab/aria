@@ -91,7 +91,7 @@ LayerRules(
     }
 )
 
-Opaque = function(...)
+NonOpaque = function(...)
     for i, class in ipairs({...}) do
         WindowRules({
             match = { class = class },
@@ -100,7 +100,7 @@ Opaque = function(...)
     end
 end
 
-Opaque(
+NonOpaque(
     "foot",
     "org.gnome.Nautilus",
     "org.gnome.Decibels"
