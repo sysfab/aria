@@ -14,7 +14,6 @@ GameMode = {
             rule:set_enabled(false)
         end
 
-        Plugin("dynamic_cursors", { enabled = false })
         Config({
             general = {
                 gaps_in = 0,

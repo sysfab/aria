@@ -2,8 +2,6 @@
 @define-color window_bg_color transparent;
 @define-color accent_bg_color rgba(20, 20, 20, 0.6);
 @define-color theme_fg_color rgb(255, 255, 255);
-@define-color error_bg_color #C34043;
-@define-color error_fg_color #DCD7BA;
 
 * {
   all: unset;
@@ -36,7 +34,6 @@ scrollbar {
   background: transparent;
 }
 
-/* Input bar: rgba(0,0,0,0.8), no radius, 0.5em padding */
 .search-container {
   background: rgba(0, 0, 0, 0.8);
   padding: 0.5em;
@@ -80,7 +77,6 @@ scrollbar {
   border-radius: 0px 0px 10px 10px;
 }
 
-/* List items: rgba(0,0,0,0.6), no radius, 0.5em padding */
 .item-box {
   background: rgba(0, 0, 0, 0.6);
   border-radius: 0px;
@@ -145,38 +141,6 @@ row:selected .item-box {
   font-size: 24px;
 }
 
-.symbols .item-image {
-  font-size: 24px;
-}
-
-.todo.done .item-text-box {
-  opacity: 0.25;
-}
-
-.todo.urgent {
-  font-size: 24px;
-}
-
-.todo.active {
-  font-weight: bold;
-}
-
-.bluetooth.disconnected {
-  opacity: 0.5;
-}
-
-/* Error bar, e.g. "Theme [aria]: missing 'X' object" */
-.error {
-  padding: 10px;
-  background: @error_bg_color;
-  color: @error_fg_color;
-}
-
 :not(.calc).current {
   font-style: italic;
-}
-
-.preview-content.archlinuxpkgs,
-.preview-content.dnfpackages {
-  font-family: monospace;
 }

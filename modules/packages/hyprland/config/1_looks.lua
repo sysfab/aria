@@ -91,15 +91,17 @@ LayerRules(
     }
 )
 
-opaque = function(class)
-    WindowRules(
-        {
+Opaque = function(...)
+    for i, class in ipairs({...}) do
+        WindowRules({
             match = { class = class },
-            opacity = "0.865",
-        }
-    )
+            opacity = 0.865,
+        })
+    end
 end
 
-opaque("footclient")
-opaque("org.gnome.Nautilus")
-opaque("org.gnome.Decibels")
+Opaque(
+    "foot",
+    "org.gnome.Nautilus",
+    "org.gnome.Decibels"
+)

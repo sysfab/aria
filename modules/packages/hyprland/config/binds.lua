@@ -6,8 +6,7 @@ LMB = "mouse:272"
 RMB = "mouse:273"
 
 Binds(
-    { { SUPER, "Q" },         Programs("foot").Client },
-    { { SUPER, SHIFT, "Q" },  Programs("foot").Standalone },
+    { { SUPER, "Q" },         Programs("foot").Start },
 
     { { SUPER, "E" },         Programs("nautilus").Start },
 

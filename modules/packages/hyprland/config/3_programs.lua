@@ -112,19 +112,8 @@ Programs:Register(
     {
         id = "foot",
         commands = {
-            daemon = {
-                "foot -s",
-                tags = { "autostart", "on_gamemode_exit" },
-            },
-            client = {
-                "footclient"
-            },
-            standalone = {
+            start = {
                 "foot"
-            },
-            kill = {
-                "pkill foot",
-                tags = { "on_gamemode_enter" }
             }
         },
     },

@@ -20,23 +20,6 @@ Config({
 })
 
 --
--- Dynamic cursors
--- https://github.com/VirtCode/hypr-dynamic-cursors
---
-Plugin("dynamic_cursors", {
-    enabled = true,
-
-    mode = "tilt",
-    tilt = {
-        full = 15,
-    },
-
-    shake = {
-        enabled = false,
-    },
-})
-
---
 -- Default Envs
 --
 Env({

@@ -6,10 +6,14 @@
             enable = true;
 
             libraries = with pkgs; [
-                zlib
                 glib
-                libGL
+                zlib
+                stdenv.cc.cc
+                libgcc
+
+                # X11
                 libx11
+                libxcb
                 libxext
                 libxrender
                 libxi
@@ -17,27 +21,20 @@
                 libxcursor
                 libxfixes
                 libxinerama
-                libxcb
-                libdrm
-                wayland-protocols
+
+                # Wayland
                 wayland
-                pkg-config
                 libxkbcommon
-                libgcc
-                gccNGPackages_15.libstdcxx
+
+                # GPU
+                libdrm
+
+                # Common
                 zstd
-                stdenv.cc.cc
                 curl
                 openssl
-                attr
-                libssh
                 bzip2
-                libxml2
-                acl
-                libsodium
-                util-linux
                 xz
-                systemd
             ];
         };
     };

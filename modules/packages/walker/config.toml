@@ -12,4 +12,4 @@ default = [
 ]
 
 empty = ["desktopapplications"]
-max_results = 50
+max_results = 4

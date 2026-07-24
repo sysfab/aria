@@ -4,7 +4,7 @@
     flake.nixosModules.hyprlandPlugins = { pkgs, ... }:
     let
         plugin_paths = [
-            "/run/current-system/sw/lib/libhypr-dynamic-cursors.so"
+            #"/run/current-system/sw/..."
         ];
 
         load-plugins = pkgs.writeShellScriptBin "aria-hyprland-load-plugins" ''
@@ -20,7 +20,7 @@
     {
         environment.systemPackages = [
             load-plugins
-            pkgs.hyprlandPlugins.hypr-dynamic-cursors
+            #pkgs.hyprlandPlugins.
         ];
     };
 
