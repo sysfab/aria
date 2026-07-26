@@ -27,6 +27,7 @@ GameMode = {
 
             decoration = {
                 shadow = { enabled = false },
+                motion_blur = { enabled = false },
                 blur = { enabled = false },
                 glow = { enabled = false },
                 rounding = 0,
