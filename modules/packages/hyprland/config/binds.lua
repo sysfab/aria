@@ -10,7 +10,7 @@ Binds(
 
     { { SUPER, "E" },         Programs("nautilus").Start },
 
-    { { SUPER, "R" },         Programs("walker").Start },
+    { { SUPER, "R" },         Programs("anyrun").Start },
     { { SUPER, SHIFT, "R" },  Programs("aria").Picker },
 
     { { SUPER, "F" },         window.tag({ tag = "no_share" }) },

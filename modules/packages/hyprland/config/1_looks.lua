@@ -78,27 +78,34 @@ WorkspaceRules(
     }
 )
 
-LayerRules(
-    {
-        match = { namespace = "walker" },
-        blur = true,
-        ignore_alpha = 0.1
-    },
-    {
-        match = { namespace = "swaync-control-center" },
-        blur = true,
-        ignore_alpha = 0.1
-    }
-)
+NonOpaqueLayers = function(...)
+    for i, namespace in ipairs({...}) do
+        LayerRules({
+            match = { namespace = namespace },
+            blur = true,
+            ignore_alpha = 0.1
+        })
+    end
+end
 
 NonOpaque = function(...)
-    for i, class in ipairs({...}) do
+    for i, class in ipairs({ ... }) do
         WindowRules({
             match = { class = class },
             opacity = 0.865,
         })
     end
 end
+
+LayerRules({
+    match = { namespace = "anyrun" },
+    no_anim = true
+})
+
+NonOpaqueLayers(
+    "anyrun",
+    "swaync-control-center"
+)
 
 NonOpaque(
     "foot",

@@ -1,6 +1,3 @@
---
--- Programs API
---
 Programs = setmetatable({
     Registered = {},
     Get = function(self, id) return self.Registered[id] end,
@@ -80,32 +77,15 @@ Programs:Register(
     },
 
     {
-        id = "elephant",
+        id = "anyrun",
         commands = {
             daemon = {
-                "elephant",
-                tags = { "autostart", "on_gamemode_exit" },
-            },
-            kill = {
-                "pkill elephant",
-                tags = { "on_gamemode_enter" }
-            }
-        },
-    },
-    {
-        id = "walker",
-        commands = {
-            daemon = {
-                "walker --gapplication-service",
-                tags = { "autostart", "on_gamemode_exit" },
+                "anyrun daemon",
+                tags = { "autostart" },
             },
             start = {
-                "walker"
+                "anyrun"
             },
-            kill = {
-                "pkill walker",
-                tags = { "on_gamemode_enter" }
-            }
         },
     },
 

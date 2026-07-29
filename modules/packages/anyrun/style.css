@@ -1,0 +1,62 @@
+@define-color accent #5599d2;
+@define-color fg-color #eeeeee;
+@define-color desc-color #cccccc;
+
+* {
+    font-family: Roboto;
+    font-weight: normal;
+}
+
+window {
+    background: transparent;
+}
+
+box.main {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+text {
+    font-size: 24px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.5);
+
+    min-height: 30px;
+    padding: 20px;
+}
+
+box.plugin:first-child {
+    padding: 2px;
+    margin-top: 0px;
+}
+box.plugin.info {
+    min-width: 200px;
+}
+
+list.plugin {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+label.match {
+    font-size: 24px;
+    color: rgb(230, 230, 230);
+}
+label.match.description {
+    font-size: 0px;
+}
+label.plugin.info {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.matches {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px;
+}
+
+.match {
+    background: transparent;
+}
+.match:selected {
+    background: rgba(255, 255, 255, 0.05);
+}

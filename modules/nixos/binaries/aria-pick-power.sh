@@ -1,6 +1,6 @@
 options="Shutdown\nReboot\nLogout"
 
-choice=$(printf "$options" | walker --dmenu -p "Power")
+choice=$(printf "$options" | anyrun --plugins libstdin.so )
 
 case "$choice" in
     Shutdown)

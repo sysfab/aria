@@ -19,9 +19,7 @@ Config({
     },
 })
 
---
 -- Default Envs
---
 Env({
     GTK_USE_PORTAL = "1",
 

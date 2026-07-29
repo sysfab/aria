@@ -7,7 +7,7 @@ choice="$(
 {
     echo "Random wallpaper"
     find -L "$wallpapers" -maxdepth 1 -type f -printf "%f\n"
-} | walker --dmenu -p Wallpaper
+} | anyrun --plugins libstdin.so
 )" || exit
 
 [ -z "$choice" ] && exit

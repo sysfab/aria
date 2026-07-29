@@ -13,10 +13,7 @@
         import-tree.url = "github:vic/import-tree";
 
         # other
-        walker = {
-            url = "github:abenz1267/walker";
-        };
-
+        anyrun.url = "github:anyrun-org/anyrun";
         zen-browser = {
             url = "github:youwen5/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";

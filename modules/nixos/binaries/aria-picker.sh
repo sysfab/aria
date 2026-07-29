@@ -1,6 +1,6 @@
 options="Power\nChange wallpaper"
 
-choice=$(printf "$options" | walker --dmenu -p "Picker")
+choice=$(printf "$options" | anyrun --plugins libstdin.so )
 
 case "$choice" in
     Power)

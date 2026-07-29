@@ -1,6 +1,3 @@
---
--- Aria Hyprland API
---
 Config = hl.config
 GetConfig = hl.get_config
 
