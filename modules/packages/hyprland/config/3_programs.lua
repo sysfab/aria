@@ -109,9 +109,7 @@ Programs:Register(
     {
         id = "foot",
         commands = {
-            start = {
-                "foot"
-            }
+            start = { "foot" }
         },
     },
 
@@ -154,8 +152,7 @@ Programs:Register(
     {
         id = "nautilus",
         commands = {
-            start = { "nautilus" },
-            kill = { "pkill nautilus" }
+            start = { "nautilus" }
         }
     }
 )
