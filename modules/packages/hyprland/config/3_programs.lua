@@ -1,3 +1,32 @@
+Program = {
+    __index = {
+        ForCommand = function(self, func)
+            for name, command in pairs(self.commands) do
+                func(name, command)
+            end
+        end,
+
+        ForTaggedCommand = function(self, tag, func)
+            self:ForCommand(function(name, command)
+                if type(command.tags) == "table" then
+                    for _, ctag in ipairs(command.tags) do
+                        if ctag == tag then
+                            func(name, command)
+                        end
+                    end
+                end
+            end)
+        end,
+
+        Set = function(self, commands)
+            for name, command in pairs(commands) do
+                self[name] = command
+                self[ToPascalCase(name)] = function() exec_cmd(command[1]) end
+            end
+        end
+    }
+}
+
 Programs = setmetatable({
     Registered = {},
     Get = function(self, id) return self.Registered[id] end,
@@ -9,26 +38,10 @@ Programs = setmetatable({
 
     Register = function(self, ...)
         for _, program in ipairs({ ... }) do
-            program.ForCommand = function(_, func)
-                for name, command in pairs(_.commands) do
-                    func(name, command)
-                end
-            end
-
-            program.ForTaggedCommand = function(_, tag, func)
-                _:ForCommand(function(name, command)
-                    if type(command.tags) == "table" then
-                        for _, ctag in ipairs(command.tags) do
-                            if ctag == tag then
-                                func(name, command)
-                            end
-                        end
-                    end
-                end)
-            end
+            program = setmetatable(program, Program)
 
             program:ForCommand(function(name, command)
-                program[ToPascalCase(name)] = function() exec_cmd(command[1]) end
+                program:Set({[name] = command})
             end)
 
             self.Registered[program.id] = program
