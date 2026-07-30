@@ -1,5 +1,4 @@
 options="Shutdown\nReboot\nLogout"
-
 choice=$(printf "$options" | anyrun --plugins libstdin.so )
 
 case "$choice" in

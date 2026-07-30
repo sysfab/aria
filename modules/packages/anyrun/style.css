@@ -29,11 +29,10 @@ list.plugin {
     background-color: rgba(0, 0, 0, 0);
 }
 
-label.match {
+label.match.title {
     font-size: 24px;
     color: rgb(230, 230, 230);
-    padding-left: 10px;
-    padding-top: 10px;
+    padding: 10px;
 }
 label.match.description {
     font-size: 0px;

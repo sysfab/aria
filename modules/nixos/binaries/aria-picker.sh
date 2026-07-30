@@ -1,5 +1,4 @@
 options="Power\nChange wallpaper"
-
 choice=$(printf "$options" | anyrun --plugins libstdin.so )
 
 case "$choice" in
