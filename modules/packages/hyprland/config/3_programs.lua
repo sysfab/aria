@@ -70,7 +70,11 @@ Programs:Register(
         commands = {
             load_plugins = {
                 "aria-hyprland-load-plugins",
-                tags = { "autostart" },
+                tags = { "autostart", "on_gamemode_exit" },
+            },
+            unload_plugins = {
+                "aria-hyprland-unload-plugins",
+                tags = { "on_gamemode_enter" }
             },
             picker = { "aria-picker" },
         },

@@ -7,11 +7,14 @@
             #"/run/current-system/sw/..."
         ];
 
-        load-plugins = pkgs.writeShellScriptBin "aria-hyprland-load-plugins" ''
+        unload-plugins = pkgs.writeShellScriptBin "aria-hyprland-unload-plugins" ''
             ${builtins.concatStringsSep "\n" (map (path: ''
                 hyprctl plugin unload ${path} || true
             '') plugin_paths)}
+        '';
 
+        load-plugins = pkgs.writeShellScriptBin "aria-hyprland-load-plugins" ''
+            aria-hyprland-unload-plugins
             ${builtins.concatStringsSep "\n" (map (path: ''
                 hyprctl plugin load ${path}
             '') plugin_paths)}
@@ -19,6 +22,7 @@
     in
     {
         environment.systemPackages = [
+            unload-plugins
             load-plugins
             #pkgs.hyprlandPlugins.
         ];
