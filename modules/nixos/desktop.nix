@@ -15,6 +15,7 @@
             libxcvt
             pulseaudio
             wl-clipboard
+            wtype
 
             # themes
             adw-gtk3
