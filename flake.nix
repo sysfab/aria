@@ -3,14 +3,12 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        flake-parts.url = "github:hercules-ci/flake-parts";
 
         hjem = {
             url = "github:feel-co/hjem";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
-        flake-parts.url = "github:hercules-ci/flake-parts";
-        import-tree.url = "github:vic/import-tree";
 
         # other
         anyrun.url = "github:anyrun-org/anyrun";
@@ -22,7 +20,8 @@
 
     outputs = inputs @ { self, ... }:
         let
-            modules = [ (inputs.import-tree ./modules) ];
+            modules = let importTree = import ./import.nix; in
+                (importTree ./modules).imports;
         in
         inputs.flake-parts.lib.mkFlake { inherit inputs; }
             {
