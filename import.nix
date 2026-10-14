@@ -1,19 +1,3 @@
-# import-tree.nix
-#
-# Minimal, dependency-free reimplementation of vic/import-tree
-# (https://github.com/vic/import-tree).
-#
-# Recursively imports every `*.nix` file found under `basePath`.
-# Unlike the original, this version takes ONLY the base path —
-# no .filter/.match/.map chaining, no .addAPI, no extra options.
-#
-# Rules (matching import-tree's defaults):
-#   - any path segment starting with "_" is skipped entirely
-#     (files and directories)
-#   - "default.nix" files are skipped (avoids self-import / duplicate
-#     imports of directory defaults)
-#   - everything else ending in ".nix" gets imported
-#
 # Usage:
 #   # flake.nix
 #   outputs = inputs @ { self, ... }:
@@ -27,7 +11,7 @@
 #
 # or directly:
 #   let importTree = import ./import-tree.nix;
-#   in importTree ./modules   # => { imports = [ <module 1> <module 2> ... ]; }
+#   in importTree ./modules # => { imports = [ <module 1> <module 2> ... ]; }
 
 basePath:
 

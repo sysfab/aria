@@ -20,14 +20,13 @@
 
     outputs = inputs @ { self, ... }:
         let
-            modules = let importTree = import ./import.nix; in
-                (importTree ./modules).imports;
+            modules = let importTree = import ./import.nix; in (importTree ./modules).imports;
         in
         inputs.flake-parts.lib.mkFlake { inherit inputs; }
             {
                 systems = ["x86_64-linux"];
 
-                flake.all = {
+                flake.modules = {
                     home = builtins.attrValues self.homeModules;
 
                     system = [
@@ -46,12 +45,10 @@
                 imports = [
                     (
                         {lib, flake-parts-lib, ...}: {
-                            options = {
-                                flake = flake-parts-lib.mkSubmoduleOptions {
-                                    homeModules = lib.mkOption {
-                                        type = lib.types.lazyAttrsOf lib.types.deferredModule;
-                                        default = { };
-                                    };
+                            options.flake = flake-parts-lib.mkSubmoduleOptions {
+                                homeModules = lib.mkOption {
+                                    type = lib.types.lazyAttrsOf lib.types.deferredModule;
+                                    default = { };
                                 };
                             };
                         }
