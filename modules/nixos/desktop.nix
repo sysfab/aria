@@ -31,7 +31,6 @@
             decibels
             loupe
             gnome-system-monitor
-            inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
     };
 }
