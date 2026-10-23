@@ -41,7 +41,6 @@
     },
     "outline_panel": {
         "file_icons": true,
-        "folder_icons": true,
         "button": false,
     },
     "zoomed_padding": true,
@@ -95,7 +94,6 @@
         "bold_folder_labels": false,
         "starts_open": true,
         "file_icons": true,
-        "folder_icons": false,
         "hide_gitignore": false,
         "entry_spacing": "comfortable",
         "dock": "left",
