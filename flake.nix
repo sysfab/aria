@@ -32,10 +32,10 @@
                     system = [
                         inputs.hjem.nixosModules.default
                         ({...}: let
-                            modules = builtins.attrValues self.homeModules;
+                            homeModules = builtins.attrValues self.homeModules;
                         in {
                             hjem = {
-                                extraModules = modules;
+                                extraModules = homeModules;
                                 clobberByDefault = true;
                             };
                         })
