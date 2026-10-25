@@ -36,7 +36,9 @@
                         in {
                             hjem = {
                                 extraModules = homeModules;
+
                                 clobberByDefault = true;
+                                linker = null;
                             };
                         })
                     ] ++ (builtins.attrValues self.nixosModules);
