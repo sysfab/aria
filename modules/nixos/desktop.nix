@@ -28,8 +28,6 @@
             nautilus
             pavucontrol
             qpwgraph
-            decibels
-            loupe
             gnome-system-monitor
         ];
     };

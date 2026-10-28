@@ -26,20 +26,9 @@
                     "application/javascript" = [ "codium.desktop" ];
                     "application/x-yaml" = [ "codium.desktop" ];
 
-                    "audio/mpeg" = [ "org.gnome.Decibels.desktop" ];
-                    "audio/flac" = [ "org.gnome.Decibels.desktop" ];
-                    "audio/mp4" = [ "org.gnome.Decibels.desktop" ];
-                    "audio/ogg" = [ "org.gnome.Decibels.desktop" ];
-                    "audio/x-wav" = [ "org.gnome.Decibels.desktop" ];
-                    "audio/aac" = [ "org.gnome.Decibels.desktop" ];
-
-                    "video/mp4" = [ "com.github.rafostar.Clapper.desktop" ];
-                    "video/x-matroska" = [ "com.github.rafostar.Clapper.desktop" ];
-                    "video/webm" = [ "com.github.rafostar.Clapper.desktop" ];
-                    "video/quicktime" = [ "com.github.rafostar.Clapper.desktop" ];
-                    "video/x-flv" = [ "com.github.rafostar.Clapper.desktop" ];
-                    "video/x-msvideo" = [ "com.github.rafostar.Clapper.desktop" ];
-                    "application/x-matroska" = [ "com.github.rafostar.Clapper.desktop" ];
+                    "audio/*" = [ "mpv.desktop" ];
+                    "video/*" = [ "mpv.desktop" ];
+                    "application/x-matroska" = [ "mpv.desktop" ];
 
                     "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
                     "image/png" = [ "org.gnome.Loupe.desktop" ];
