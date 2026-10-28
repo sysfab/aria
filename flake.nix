@@ -19,42 +19,36 @@
     };
 
     outputs = inputs @ { self, ... }:
-        let
-            modules = let importTree = import ./import.nix; in (importTree ./modules).imports;
-        in
-        inputs.flake-parts.lib.mkFlake { inherit inputs; }
-            {
-                systems = ["x86_64-linux"];
+    let
+        modules = let importTree = import ./import.nix; in (importTree ./modules).imports;
+    in
+    inputs.flake-parts.lib.mkFlake { inherit inputs; }
+    {
+        systems = ["x86_64-linux"];
 
-                flake.modules = {
-                    home = builtins.attrValues self.homeModules;
+        flake.modules = {
+            system = [
+                inputs.hjem.nixosModules.default
+                ({...}: {
+                    hjem = {
+                        clobberByDefault = true;
+                        linker = null;
+                    };
+                })
+            ] ++ builtins.attrValues self.nixosModules;
 
-                    system = [
-                        inputs.hjem.nixosModules.default
-                        ({...}: let
-                            homeModules = builtins.attrValues self.homeModules;
-                        in {
-                            hjem = {
-                                extraModules = homeModules;
+            home = builtins.attrValues self.homeModules;
+        };
 
-                                clobberByDefault = true;
-                                linker = null;
-                            };
-                        })
-                    ] ++ (builtins.attrValues self.nixosModules);
+        imports = [
+            ({lib, flake-parts-lib, ...}: {
+                options.flake = flake-parts-lib.mkSubmoduleOptions {
+                    homeModules = lib.mkOption {
+                        type = lib.types.lazyAttrsOf lib.types.deferredModule;
+                        default = { };
+                    };
                 };
-
-                imports = [
-                    (
-                        {lib, flake-parts-lib, ...}: {
-                            options.flake = flake-parts-lib.mkSubmoduleOptions {
-                                homeModules = lib.mkOption {
-                                    type = lib.types.lazyAttrsOf lib.types.deferredModule;
-                                    default = { };
-                                };
-                            };
-                        }
-                    )
-                ] ++ modules;
-            };
+            })
+        ] ++ modules;
+    };
 }

@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    flake.nixosModules.bins = { config, lib, pkgs, ... }: let
+    flake.nixosModules.bins = { lib, config, pkgs, ... }: let
         entries = builtins.readDir ./.;
 
         shFiles = lib.filterAttrs (

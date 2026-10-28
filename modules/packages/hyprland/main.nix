@@ -1,7 +1,7 @@
-{ lib, ... }:
+{ self, lib, ... }:
 
 {
-    flake.nixosModules.hyprlandPlugins = { pkgs, ... }:
+    flake.nixosModules.hyprland = { lib, config, pkgs, ... }:
     let
         plugin_paths = [
             #"/run/current-system/sw/..."
@@ -21,30 +21,49 @@
         '';
     in
     {
-        environment.systemPackages = [
-            unload-plugins
-            load-plugins
-            #pkgs.hyprlandPlugins.
-        ];
+        options.aria.hyprland = {
+            enable = lib.mkOption {
+                type = lib.types.bool;
+                default = true;
+            };
+        };
+
+        config = {
+            environment.systemPackages = lib.mkIf config.aria.hyprland.enable [
+                pkgs.hyprshot
+                pkgs.hyprshutdown
+
+                unload-plugins
+                load-plugins
+            ];
+
+            programs.hyprland = lib.mkIf config.aria.hyprland.enable {
+                enable = lib.mkForce true;
+                withUWSM = lib.mkForce true;
+            };
+
+            nix.settings = {
+                substituters = ["https://hyprland.cachix.org"];
+                trusted-substituters = ["https://hyprland.cachix.org"];
+                trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+                trusted-users = ["root" "@wheel"];
+            };
+        };
     };
 
-    flake.nixosModules.hyprland = { pkgs, ... }: {
-        environment.systemPackages = with pkgs; [
-            hyprshot
-            hyprshutdown
-        ];
+    flake.homeModules.hyprland = { config, ... }: {
+        options.aria.hyprland = {
+            extraConfig = lib.mkOption {
+                type = lib.types.str;
+                default = "";
+            };
+        };
 
-        nix.settings = {
-            substituters = ["https://hyprland.cachix.org"];
-            trusted-substituters = ["https://hyprland.cachix.org"];
-            trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-            trusted-users = ["root" "@wheel"];
-          };
-    };
-
-    flake.homeModules.hyprland = { ... }: {
-        xdg.config.files = {
-            "hypr/hyprtoolkit.conf".source = ./hyprtoolkit.conf;
+        config = {
+            xdg.config.files = {
+                "hypr/hyprland.lua".text = self.mkHyprlandConfig { extraConfig = config.aria.hyprland.extraConfig; };
+                "hypr/hyprtoolkit.conf".source = ./hyprtoolkit.conf;
+            };
         };
     };
 
@@ -52,6 +71,6 @@
         lib.strings.concatStringsSep "\n" (
             (map builtins.readFile (
                 lib.filesystem.listFilesRecursive ./config
-            )) ++ [ extraConfig ]
+            )) ++ [ "-- extraConfig:" extraConfig ]
         );
 }
