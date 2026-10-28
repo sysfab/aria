@@ -14,6 +14,11 @@
                     "_module"
                     "isNormalUser"
                 ]) // {
+                    enable = mkOption {
+                        type = lib.types.bool;
+                        default = true;
+                    };
+
                     modules = mkOption {
                         type = types.listOf types.deferredModule;
                         default = [];
@@ -33,6 +38,7 @@
         });
 
         cfg = config.aria.users;
+        enabledUsers = lib.filterAttrs (_: user: user.enable) cfg;
     in
     {
         options.aria.users = mkOption {
@@ -45,18 +51,19 @@
             users.users = lib.mapAttrs (
                 name: user:
                     (removeAttrs user [
+                        "enable"
                         "modules"
                     ]) // {
                         isNormalUser = true;
                     }
-            ) cfg;
+            ) enabledUsers;
 
             hjem.users = lib.mapAttrs (
                 name: user: {
                     enable = true;
                     imports = self.modules.home ++ user.modules;
                 }
-            ) cfg;
+            ) enabledUsers;
         };
     };
 }
