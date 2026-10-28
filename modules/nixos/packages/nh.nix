@@ -9,7 +9,7 @@
 
         config = {
             programs.nh = {
-                enable = true;
+                enable = lib.mkForce true;
                 flake = lib.mkForce config.aria.flake;
 
                 clean = {
