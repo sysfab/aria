@@ -1,12 +1,12 @@
 GameMode = {
     IsEnabled = function()
-        return (GetConfig("misc.disable_autoreload") == true)
+        return (Get("misc.disable_autoreload") == true)
     end,
 
     Enable = function()
         Programs:ForEach(function(program)
             program:ForTaggedCommand("on_gamemode_enter", function(_, command)
-                exec_cmd(command[1])
+                hl.exec_cmd(command[1])
             end)
         end)
 
@@ -46,10 +46,10 @@ GameMode = {
     Disable = function()
         Programs:ForEach(function(program)
             program:ForTaggedCommand("on_gamemode_exit", function(_, command)
-                exec_cmd(command[1])
+                hl.exec_cmd(command[1])
             end)
         end)
-        exec_cmd("hyprctl reload")
+        hl.exec_cmd("hyprctl reload")
     end,
 
     Toggle = function()

@@ -1,7 +1,7 @@
-{ self, ... }:
+{ self, lib, ... }:
 
 {
-    flake.nixosModules.users = { lib, config, options, pkgs, ... }:
+    flake.nixosModules.users = { config, options, pkgs, ... }:
     let
         nativeUserOptions =
             options.users.users.type.nestedTypes.elemType.getSubOptions [];
@@ -42,7 +42,7 @@
         options.aria.users = lib.mkOption {
             type = lib.types.attrsOf ariaUserType;
             default = {};
-            description = "Aria user configuration";
+            description = "User configuration (in aria's way)";
         };
 
         config = {

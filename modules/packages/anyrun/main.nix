@@ -6,6 +6,8 @@
             inputs.anyrun.packages.x86_64-linux.anyrun-with-all-plugins
         ];
 
+        aria.picker.handler = "anyrun --plugins libstdin.so";
+
         nix.settings = {
             builders-use-substitutes = true;
             substituters = ["https://anyrun.cachix.org"];
@@ -15,7 +17,7 @@
         };
     };
 
-    flake.homeModules.walker = { ... }: {
+    flake.homeModules.anyrun = { ... }: {
         xdg.config.files = {
             "anyrun/config.ron".source = ./config.ron;
             "anyrun/style.css".source = ./style.css;

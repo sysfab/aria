@@ -1,5 +1,1 @@
-{
-  "Lua.diagnostics.globals": [
-    "hl"
-  ]
-}
+{ "diagnostics.enable": false }

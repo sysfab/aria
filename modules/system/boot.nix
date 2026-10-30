@@ -1,14 +1,15 @@
 { ... }:
 
 {
-    flake.nixosModules.boot = { ... }: {
+    flake.nixosModules.boot = { ... }:
+    {
         boot = {
             loader = {
                 grub = {
                     enable = true;
 
-                    theme = ./grub-theme;
-                    splashImage = ./grub-theme/background.jpeg;
+                    theme = ../../extra/grub/theme;
+                    splashImage = ../../extra/grub/theme/background.jpeg;
                 };
 
                 timeout = 3;

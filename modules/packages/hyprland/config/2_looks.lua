@@ -32,6 +32,25 @@ Config({
     },
 })
 
+WindowRules(
+    {
+        match = { tag = "no_share" },
+        no_screen_share = true,
+        border_size = 2,
+        border_color = "rgba(ff0000bf) rgba(ff0000bf)",
+    }
+)
+
+WorkspaceRules(
+    {
+        workspace = "w[tv1]",
+        gaps_in = 0,
+        gaps_out = 0,
+        no_border = true,
+        no_rounding = true,
+    }
+)
+
 Curves({
     easeOutQuint = {type = "bezier", points = {{0.23,1}, {0.32,1}}},
     easeInOutCubic = {type = "bezier", points = {{0.65,0.05}, {0.36,1}}},
@@ -57,58 +76,4 @@ Animations(
     {leaf = "workspaces", speed = 1.94, bezier = "almostLinear", style = "fade", enabled = true},
     {leaf = "workspacesIn", speed = 1.21, bezier = "almostLinear", style = "fade", enabled = true},
     {leaf = "workspacesOut", speed = 1.94, bezier = "almostLinear", style = "fade", enabled = true}
-)
-
-WindowRules(
-    {
-        match = { tag = "no_share" },
-        no_screen_share = true,
-        border_size = 2,
-        border_color = "rgba(ff0000bf) rgba(ff0000bf)",
-    }
-)
-
-WorkspaceRules(
-    {
-        workspace = "w[tv1]",
-        gaps_in = 0,
-        gaps_out = 0,
-        no_border = true,
-        no_rounding = true,
-    }
-)
-
-NonOpaqueLayers = function(...)
-    for i, namespace in ipairs({...}) do
-        LayerRules({
-            match = { namespace = namespace },
-            blur = true,
-            ignore_alpha = 0.1
-        })
-    end
-end
-
-NonOpaque = function(...)
-    for i, class in ipairs({ ... }) do
-        WindowRules({
-            match = { class = class },
-            opacity = 0.865,
-        })
-    end
-end
-
-LayerRules({
-    match = { namespace = "anyrun" },
-    no_anim = true
-})
-
-NonOpaqueLayers(
-    "anyrun",
-    "swaync-control-center"
-)
-
-NonOpaque(
-    "foot",
-    "org.gnome.Nautilus",
-    "org.gnome.Decibels"
 )

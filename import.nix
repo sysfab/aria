@@ -1,55 +1,35 @@
-# Usage:
-#   # flake.nix
-#   outputs = inputs @ { self, ... }:
-#     let
-#       modules = (inputs.import-tree ./modules).imports;
-#     in
-#     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-#       systems = [ "x86_64-linux" ];
-#       imports = modules;
-#     };
-#
-# or directly:
-#   let importTree = import ./import-tree.nix;
-#   in importTree ./modules # => { imports = [ <module 1> <module 2> ... ]; }
-
-basePath:
-
+path:
 let
-  hasPrefix = prefix: str:
-    let n = builtins.stringLength prefix;
-    in builtins.substring 0 n str == prefix;
+    inherit (builtins) stringLength substring;
 
-  hasSuffix = suffix: str:
+    hasPrefix = prefix: str:
+        let n = stringLength prefix;
+        in substring 0 n str == prefix;
+
+    hasSuffix = suffix: str:
+        let n = stringLength suffix;
+            len = stringLength str;
+        in len >= n && substring (len - n) n str == suffix;
+
+    walk = dir:
     let
-      lenStr = builtins.stringLength str;
-      lenSuf = builtins.stringLength suffix;
-    in
-    lenStr >= lenSuf
-    && builtins.substring (lenStr - lenSuf) lenSuf str == suffix;
+        entries = builtins.readDir dir;
+        names = builtins.attrNames entries;
 
-  # Recursively walk `dir`, returning a flat list of importable .nix paths.
-  walk = dir:
-    let
-      entries = builtins.readDir dir;
-      names = builtins.attrNames entries;
-
-      collect = name:
+        collect = name:
         let
-          type = entries.${name};
-          full = dir + "/${name}";
+            type = entries.${name};
+            full = dir + "/${name}";
         in
         if hasPrefix "_" name then
-          [ ]
+            [ ]
         else if type == "directory" then
-          walk full
+            walk full
         else if type == "regular" && hasSuffix ".nix" name && name != "default.nix" then
-          [ full ]
+            [ full ]
         else
-          [ ];
+            [ ];
     in
     builtins.concatMap collect names;
 in
-{
-    imports = map import (walk basePath);
-}
+map import (walk path)

@@ -3,7 +3,7 @@ Moga Cursor (vr 1.1) for Linux.
 Created by MOYASH.
 ------------------
 
-to install: 
+to install:
 
 1-Move "Moga-Cursor" folder to the ".icons" folder in your "Home" directory.
 

@@ -3,14 +3,13 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-        flake-parts.url = "github:hercules-ci/flake-parts";
+        parts.url = "github:hercules-ci/flake-parts";
 
         hjem = {
             url = "github:feel-co/hjem";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        # other
         anyrun.url = "github:anyrun-org/anyrun";
         zen-browser = {
             url = "github:youwen5/zen-browser-flake";
@@ -20,24 +19,33 @@
 
     outputs = inputs @ { self, ... }:
     let
-        modules = let importTree = import ./import.nix; in (importTree ./modules).imports;
+        importlib = import ./import.nix;
+        modules = (importlib ./modules);
     in
-    inputs.flake-parts.lib.mkFlake { inherit inputs; }
-    {
+    inputs.parts.lib.mkFlake { inherit inputs; } {
         systems = ["x86_64-linux"];
 
-        flake.modules = {
-            system = [
-                inputs.hjem.nixosModules.default
-                ({...}: {
-                    hjem = {
-                        clobberByDefault = true;
-                        linker = null;
-                    };
-                })
-            ] ++ builtins.attrValues self.nixosModules;
+        flake = {
+            parts = inputs.parts;
 
-            home = builtins.attrValues self.homeModules;
+            lib = {
+                import = importlib;
+                mkFlake = inputs.parts.lib.mkFlake;
+            };
+
+            modules = {
+                system = [
+                    inputs.hjem.nixosModules.default
+                    ({...}: {
+                        hjem = {
+                            clobberByDefault = true;
+                            linker = null;
+                        };
+                    })
+                ] ++ builtins.attrValues self.nixosModules;
+
+                home = builtins.attrValues self.homeModules;
+            };
         };
 
         imports = [

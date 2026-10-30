@@ -1,7 +1,7 @@
 { self, lib, ... }:
 
 {
-    flake.nixosModules.hyprland = { lib, config, pkgs, ... }:
+    flake.nixosModules.hyprland = { config, pkgs, ... }:
     let
         plugin_paths = [
             #"/run/current-system/sw/..."
@@ -28,8 +28,14 @@
             };
         };
 
-        config = {
-            environment.systemPackages = lib.mkIf config.aria.hyprland.enable [
+        config = lib.mkIf config.aria.hyprland.enable {
+            aria.pickers.power.commands = {
+                shutdown.command = "hyprshutdown -t 'Shutting down...' --post-cmd 'systemctl shutdown now'";
+                reboot.command = "hyprshutdown -t 'Restarting...' --post-cmd 'systemctl reboot'";
+                logout.command = "hyprshutdown -t 'Loggining off...'";
+            };
+
+            environment.systemPackages = [
                 pkgs.hyprshot
                 pkgs.hyprshutdown
 
@@ -37,7 +43,7 @@
                 load-plugins
             ];
 
-            programs.hyprland = lib.mkIf config.aria.hyprland.enable {
+            programs.hyprland = {
                 enable = lib.mkForce true;
                 withUWSM = lib.mkForce true;
             };

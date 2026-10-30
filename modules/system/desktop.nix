@@ -24,7 +24,6 @@
             gnome-themes-extra
 
             # packages
-            awww
             nautilus
             pavucontrol
             qpwgraph
