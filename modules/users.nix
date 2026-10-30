@@ -1,26 +1,24 @@
 { self, ... }:
 
 {
-    flake.nixosModules.users = { pkgs, lib, config, options, ... }:
+    flake.nixosModules.users = { lib, config, options, pkgs, ... }:
     let
-        inherit (lib) mkOption types;
-
         nativeUserOptions =
             options.users.users.type.nestedTypes.elemType.getSubOptions [];
 
-        ariaUserType = types.submodule ({ name, ... }: {
+        ariaUserType = lib.types.submodule ({ name, ... }: {
             options =
                 (removeAttrs nativeUserOptions [
                     "_module"
                     "isNormalUser"
                 ]) // {
-                    enable = mkOption {
+                    enable = lib.mkOption {
                         type = lib.types.bool;
                         default = true;
                     };
 
-                    modules = mkOption {
-                        type = types.listOf types.deferredModule;
+                    modules = lib.mkOption {
+                        type = lib.types.listOf lib.types.deferredModule;
                         default = [];
                         description = "Hjem modules for this user";
                     };
@@ -41,8 +39,8 @@
         enabledUsers = lib.filterAttrs (_: user: user.enable) cfg;
     in
     {
-        options.aria.users = mkOption {
-            type = types.attrsOf ariaUserType;
+        options.aria.users = lib.mkOption {
+            type = lib.types.attrsOf ariaUserType;
             default = {};
             description = "Aria user configuration";
         };
