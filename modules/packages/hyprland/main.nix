@@ -32,7 +32,7 @@
             aria.pickers.power.commands = {
                 shutdown.command = "hyprshutdown -t 'Shutting down...' --post-cmd 'systemctl shutdown now'";
                 reboot.command = "hyprshutdown -t 'Restarting...' --post-cmd 'systemctl reboot'";
-                logout.command = "hyprshutdown -t 'Loggining off...'";
+                logout.command = "hyprshutdown -t 'Loggining off...' --post-cmd 'sudo pkill -u \${USER}'";
             };
 
             environment.systemPackages = [

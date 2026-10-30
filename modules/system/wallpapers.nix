@@ -1,4 +1,4 @@
-{ self, ... }:
+{ ... }:
 
 let
     folder = "Pictures/Wallpapers";
@@ -75,7 +75,7 @@ in
         '';
     in
     {
-        aria.pickers.wallpapers = {
+        aria.pickers.wallpaper = {
             name = "Change wallpapers";
             command = "aria-pick-wallpaper";
         };

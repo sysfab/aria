@@ -75,12 +75,12 @@ Program = {
             return self
         end,
 
-        ForTaggedCommand = function(self, tag, func)
+        ForTaggedCommand = function(self, tag, f)
             self:ForCommand(function(name, command)
                 if type(command.tags) == "table" then
                     for _,ctag in ipairs(command.tags) do
                         if ctag == tag then
-                            func(name, command)
+                            f(name, command)
                         end
                     end
                 end
@@ -111,7 +111,7 @@ Programs = setmetatable({
     Get = function(self, id) return self.Registered[id] end,
 
     ForEach = function(self, f)
-        lib.mapi(self.Registered, function(_,p) f(p) end)
+        lib.map(self.Registered, function(_,p) f(p) end)
     end
 }, {
     __call = function(self, id)
