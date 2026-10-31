@@ -15,7 +15,8 @@ alias cdi='zi'
 alias cat='bat'
 alias catp='bat --plain'
 
-alias ls='eza --long --color=always --no-user --no-permissions'
+alias ls='eza --long --color=always --no-user --no-permissions --no-filesize --no-time'
+alias lsf='eza --long'
 
 alias code='zeditor'
 
