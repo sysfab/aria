@@ -23,16 +23,12 @@
         modules = (importlib ./modules);
     in
     inputs.parts.lib.mkFlake { inherit inputs; } {
-        systems = ["x86_64-linux"];
-
         flake = {
             parts = inputs.parts;
 
             lib = {
                 import = importlib;
-                mkFlake = args: inputs.parts.lib.mkFlake (args // {
-                    systems = ["x86_64-linux"];
-                });
+                mkFlake = inputs.parts.lib.mkFlake;
             };
 
             modules = {
