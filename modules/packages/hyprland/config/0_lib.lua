@@ -149,7 +149,7 @@ function Input(input)
 
             kb_variant = "",
             kb_model = "",
-            kb_options = "caps:none,grp:alt_shift_toggle",
+            kb_options = "caps:menu,grp:alt_shift_toggle",
             kb_rules = "",
 
             follow_mouse = 1,

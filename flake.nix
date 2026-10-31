@@ -30,7 +30,9 @@
 
             lib = {
                 import = importlib;
-                mkFlake = inputs.parts.lib.mkFlake;
+                mkFlake = args: inputs.parts.lib.mkFlake (args // {
+                    systems = ["x86_64-linux"];
+                });
             };
 
             modules = {
