@@ -20,7 +20,7 @@
                     modules = lib.mkOption {
                         type = lib.types.listOf lib.types.deferredModule;
                         default = [];
-                        description = "Hjem modules for this user";
+                        description = "Home modules for this user";
                     };
                 };
 
@@ -42,7 +42,7 @@
         options.aria.users = lib.mkOption {
             type = lib.types.attrsOf ariaUserType;
             default = {};
-            description = "User configuration (in aria's way)";
+            description = "User configuration";
         };
 
         config = {
