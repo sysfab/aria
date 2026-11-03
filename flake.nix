@@ -3,7 +3,7 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-        parts.url = "github:hercules-ci/flake-parts";
+        parts.url = "github:nix-aria/parts";
 
         hjem = {
             url = "github:feel-co/hjem";
