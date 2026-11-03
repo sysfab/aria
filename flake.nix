@@ -3,7 +3,11 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-        parts.url = "github:nix-aria/parts";
+
+        parts = {
+            url = "github:nix-aria/parts";
+            inputs.nixpkgs-lib.follows = "nixpkgs";
+        };
 
         hjem = {
             url = "github:feel-co/hjem";
