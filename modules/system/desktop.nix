@@ -2,8 +2,8 @@
 
 {
     flake.nixosModules.desktop = { pkgs, ... }: {
+        # for nautilus
         services.gvfs.enable = true;
-        programs.dconf.enable = true;
 
         environment.systemPackages = with pkgs; [
             # utils, libs
@@ -19,8 +19,6 @@
 
             # themes
             adw-gtk3
-            adwaita-icon-theme
-            papirus-icon-theme
             gnome-themes-extra
 
             # packages

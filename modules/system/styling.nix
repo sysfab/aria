@@ -1,7 +1,38 @@
 { ... }:
 
 {
-    flake.homeModules.gtk = { ... }: {
+    flake.nixosModules.styling = { ... }: {
+        programs.dconf = {
+            enable = true;
+
+            profiles.user.databases = [
+                {
+                    settings."org/gnome/desktop/interface" = {
+                        color-scheme = "prefer-dark";
+                    };
+                }
+            ];
+        };
+
+        qt = {
+            enable = true;
+            style = "adwaita-dark";
+        };
+
+        environment.sessionVariables = {
+            COLOR_SCHEME = "prefer-dark";
+            QT_STYLE_OVERRIDE = "adwaita-dark";
+            QT_QPA_PLATFORMTHEME = "gnome";
+        };
+    };
+
+    flake.homeModules.styling = { ... }: {
+        xdg.config.files."gtk-3.0/settings.ini".text = ''
+            [Settings]
+            gtk-theme-name=Adwaita-dark
+            gtk-application-prefer-dark-theme=1
+        '';
+
         xdg.config.files."gtk-4.0/gtk.css".text = ''
             :root {
                 --window-bg-color: #000000;
@@ -36,17 +67,5 @@
                 color: #ffffff;
             }
         '';
-    };
-
-    flake.nixosModules.qt = { ... }: {
-        qt = {
-            enable = true;
-            style = "adwaita-dark";
-        };
-
-        environment.sessionVariables = {
-            QT_QPA_PLATFORMTHEME = "gnome";
-            QT_STYLE_OVERRIDE = "adwaita-dark";
-        };
     };
 }

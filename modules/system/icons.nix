@@ -23,5 +23,16 @@
         environment.systemPackages = [
             YAMIS
         ];
+
+        programs.dconf = {
+            enable = true;
+            profiles.user.databases = [
+                {
+                    settings."org/gnome/desktop/interface" = {
+                        icon-theme = "YAMIS";
+                    };
+                }
+            ];
+        };
     };
 }
