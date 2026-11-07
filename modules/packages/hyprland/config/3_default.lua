@@ -63,11 +63,11 @@ Programs:Register(
         id = "swaync",
         commands = {
             daemon = {
-                "pkill swaync; swaync",
+                "systemctl --user start swaync.service",
                 tags = { "autostart", "on_gamemode_exit" },
             },
             kill = {
-                "pkill swaync",
+                "systemctl --user stop swaync.service",
                 tags = { "on_gamemode_enter" }
             }
         },
