@@ -1,26 +1,30 @@
 { ... }:
 
 {
-    flake.nixosModules.boot = { ... }:
-    {
+    flake.nixosModules.boot = { ... }: {
         boot = {
             loader = {
-                grub = {
+                limine = {
                     enable = true;
+                    maxGenerations = 20;
 
-                    theme = ../../extra/grub/theme;
-                    splashImage = ../../extra/grub/theme/background.jpeg;
+                    style = {
+                        wallpapers = [];
+                        backdrop = "000000";
+                    };
+
+                    extraConfig = ''
+                        quiet: yes
+                    '';
                 };
 
-                timeout = 3;
+                timeout = 1;
             };
 
-            consoleLogLevel = 3;
-
+            consoleLogLevel = 0;
             kernelParams = [
                 "quiet"
-                "systemd.show_status=false"
-                "rd.udev.log_level=3"
+                "loglevel=3"
             ];
         };
     };
