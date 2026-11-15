@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, lib, inputs, ... }:
 
 {
     flake.os = {
@@ -7,10 +7,10 @@
         homeModules ? [],
         ...
     } @ args: inputs.nixpkgs.lib.nixosSystem (
-        args // {
+        (removeAttrs args [ "homeModules" ]) // {
             inherit system;
             modules = modules ++ self.modules.system ++ [({ ... }: {
-                hjem.extraModules = homeModules;
+                hjem.extraModules = lib.mkAfter homeModules;
             })];
         }
     );
