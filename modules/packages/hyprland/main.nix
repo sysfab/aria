@@ -30,9 +30,9 @@
 
         config = lib.mkIf config.aria.hyprland.enable {
             aria.pickers.power.commands = {
-                shutdown.command = "hyprshutdown -t 'Shutting down...' --post-cmd 'systemctl shutdown now'";
-                reboot.command = "hyprshutdown -t 'Restarting...' --post-cmd 'systemctl reboot'";
-                logout.command = "hyprshutdown -t 'Loggining off...' --post-cmd 'sudo pkill -u \${USER}'";
+                shutdown.command = ''hyprshutdown --no-exit --post-cmd "shutdown now" -t "Shutting down..."'';
+                reboot.command = ''hyprshutdown --no-exit   --post-cmd "systemctl reboot"       -t "Restarting..."'';
+                logout.command = ''hyprshutdown --no-exit   --post-cmd "sudo pkill -u $\{USER}" -t "Loggining off..."'';
             };
 
             environment.systemPackages = [

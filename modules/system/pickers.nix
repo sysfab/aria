@@ -9,7 +9,7 @@
                 commands = {
                     shutdown = {
                         name = "Shutdown";
-                        command = lib.mkDefault "systemctl shutdown now";
+                        command = lib.mkDefault "shutdown now";
                     };
 
                     reboot = {
