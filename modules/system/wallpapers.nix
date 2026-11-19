@@ -30,6 +30,13 @@ in
                 transition="--transition-type grow --transition-pos bottom --transition-duration 2 --transition-fps 144"
             fi
 
+            if ! pgrep -f '[/]bin/awww-daemon' > /dev/null; then
+                nohup awww-daemon > /dev/null 2>&1 &
+                for i in $(seq 1 10); do
+                    awww query > /dev/null 2>&1 && break
+                    sleep 0.1
+                done
+            fi
             awww img $transition "$wallpaper"
         '';
 

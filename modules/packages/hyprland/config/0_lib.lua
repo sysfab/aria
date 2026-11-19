@@ -119,9 +119,7 @@ Programs = setmetatable({
     end
 })
 
-AUTOSTART = {
-    "dbus-update-activation-environment --systemd --all"
-}
+AUTOSTART = {}
 Autostart = function(...)
     for _,command in ipairs({...}) do
         table.insert(AUTOSTART, command)
@@ -208,9 +206,10 @@ WindowRules = function(...)
     end
 end
 
+WORKSPACE_RULES = {}
 WorkspaceRules = function(...)
     for _,rule in ipairs({...}) do
-        hl.workspace_rule(rule)
+        table.insert(WORKSPACE_RULES, hl.workspace_rule(rule))
     end
 end
 
@@ -232,7 +231,7 @@ TranslucentLayers = function(...)
 end
 
 Translucent = function(...)
-    for _,class in ipairs({ ... }) do
+    for i, class in ipairs({ ... }) do
         WindowRules({
             match = { class = class },
             opacity = 0.865,
