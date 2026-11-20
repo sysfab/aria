@@ -52,7 +52,6 @@ Env = function(env)
     lib.map(env, hl.env)
 end
 
-
 Bind = function(keybind, action_or_cmd, settings)
     local action = action_or_cmd
     if type(action_or_cmd) == "string" then
@@ -63,9 +62,7 @@ Bind = function(keybind, action_or_cmd, settings)
 end
 
 Binds = function(...)
-    for _,bind in ipairs({...}) do
-        Bind(table.unpack(bind))
-    end
+    lib.mapi({ ... }, function(_, bind) Bind(table.unpack(bind)) end)
 end
 
 Program = {
@@ -138,7 +135,6 @@ hl.on("hyprland.start", function()
     end)
 end)
 
-
 function Input(input)
     Config({
         input = {
@@ -155,7 +151,6 @@ function Input(input)
     })
 end
 Input({})
-
 
 MONITORS = {}
 DEFAULT_MONITOR = nil
@@ -185,7 +180,6 @@ hl.monitor({
     position = "auto",
     scale = 1,
 })
-
 
 Curves = function(curves)
     for name, curve in pairs(curves) do
@@ -373,7 +367,7 @@ for key in ([[
     _G[key:upper()] = key
 end
 
-local aliases = {
+for alias, name in pairs({
     ESC          = "Escape",
     ENTER        = "Return",
     SPACE        = "space",
@@ -401,25 +395,19 @@ local aliases = {
     LBRACE       = "braceleft",
     RBRACE       = "braceright",
     PIPE         = "bar",
-    DOT          = "period",
-}
-
-for alias, name in pairs(aliases) do
+    DOT          = "period"
+}) do
     _G[alias] = name
 end
-
 for i = 0, 9 do
     local name = "KP_" .. i
-
     _G[name] = name
     _G["KP" .. i] = name
     _G["NUMPAD" .. i] = name
 end
-
 for i = 1, 35 do
     _G["F"..i] = "F"..i
 end
-
 for i = 1, 8 do
     _G["MOUSE" .. i] = "mouse:" .. (271 + i)
 end
@@ -430,5 +418,4 @@ MOUSE_UP    = "mouse_up"
 MOUSE_DOWN  = "mouse_down"
 MOUSE_LEFT  = "mouse_left"
 MOUSE_RIGHT = "mouse_right"
-
 CATCHALL = "catchall"

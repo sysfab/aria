@@ -23,9 +23,6 @@ Autostart(
     "systemctl --user start swaync.service"
 )
 
---
--- Programs
---
 Programs:Register(
     {
         id = "anyrun",
@@ -49,9 +46,6 @@ Programs:Register(
     }
 )
 
---
--- Looks
---
 LayerRules({
     match = { namespace = "anyrun" },
     no_anim = true
@@ -67,9 +61,6 @@ Translucent(
     "org.gnome.Nautilus"
 )
 
---
--- Binds
---
 Binds(
     { { SUPER, Q },          "foot" },
     { { SUPER, E },          "nautilus" },
@@ -102,7 +93,6 @@ Binds(
     { { SUPER, RMB },        Window.resize(),  { mouse = true } }
 )
 
--- Workspaces
 for i = 1, 10 do
     local key = i % 10
     Binds(
