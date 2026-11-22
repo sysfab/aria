@@ -25,7 +25,6 @@
             "format": {
                 "months": "<span color='#ffffff'><b>{}</b></span>",
                 "weekdays": "<span color='#bbbbbb'><b>{}</b></span>",
-
                 "days": "<span color='#a0a0a0'><b>{}</b></span>",
                 "today": "<span color='#ffffff'><b>{}</b></span>"
             }
@@ -62,7 +61,6 @@
 
         "escape": true
     },
-
 
     "modules-left": [
         "tray"
