@@ -1,7 +1,7 @@
-{ ... }:
+{ lib, ... }:
 
 {
-    flake.nixosModules.network = { pkgs, lib, config, ... }: {
+    flake.nixosModules.network = { pkgs, config, ... }: {
         networking.networkmanager.enable = lib.mkDefault true;
 
         # Fixes

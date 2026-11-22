@@ -21,9 +21,7 @@
         xdg.config.files = {
             "anyrun/config.ron".source = ./config.ron;
             "anyrun/style.css".source = ./style.css;
-
             "anyrun/nix-run.ron".source = ./plugins/nix-run.ron;
-            "anyrun/websearch.ron".source = ./plugins/websearch.ron;
         };
     };
 }

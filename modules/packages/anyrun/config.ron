@@ -18,7 +18,6 @@ Config(
     plugins: [
         "libapplications.so",
         "libnix_run.so",
-        "libwebsearch.so"
     ],
 
     keybinds: [

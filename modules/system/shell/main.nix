@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
     flake.nixosModules.shell = { pkgs, ... }: {
@@ -20,7 +20,7 @@
         programs.nix-index.enableZshIntegration = false;
     };
 
-    flake.homeModules.shell = { lib, config, ... }: {
+    flake.homeModules.shell = { config, ... }: {
         options.aria.shell = {
             aliases = lib.mkOption {
                 type = lib.types.attrsOf lib.types.str;
