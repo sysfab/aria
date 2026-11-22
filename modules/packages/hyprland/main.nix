@@ -1,4 +1,4 @@
-{ self, lib, ... }:
+{ lib, ... }:
 
 {
     flake.nixosModules.hyprland = { config, pkgs, ... }:
@@ -26,9 +26,20 @@
                 type = lib.types.bool;
                 default = true;
             };
+
+            extraConfig = lib.mkOption {
+                type = lib.types.str;
+                default = "";
+            };
         };
 
         config = lib.mkIf config.aria.hyprland.enable {
+            environment.etc."aria/hyprland.lua".text = lib.strings.concatStringsSep "\n" (
+                (map builtins.readFile (
+                    lib.filesystem.listFilesRecursive ./config
+                )) ++ [ config.aria.hyprland.extraConfig ]
+            );
+
             aria.pickers.power.commands = {
                 shutdown.command = ''hyprshutdown --no-exit --post-cmd "shutdown now"           -t "Shutting down..."'';
                 reboot.command = ''hyprshutdown   --no-exit --post-cmd "systemctl reboot"       -t "Restarting..."'';
@@ -67,16 +78,14 @@
 
         config = {
             xdg.config.files = {
-                "hypr/hyprland.lua".text = self.mkHyprlandConfig { extraConfig = config.aria.hyprland.extraConfig; };
+                "hypr/hyprland.lua".text = lib.strings.concatStringsSep "\n" [
+                    ''require("/etc/aria/hyprland.lua")
+                    ''
+                    config.aria.hyprland.extraConfig
+                ];
+
                 "hypr/hyprtoolkit.conf".source = ./hyprtoolkit.conf;
             };
         };
     };
-
-    flake.mkHyprlandConfig = { extraConfig ? "" }:
-        lib.strings.concatStringsSep "\n" (
-            (map builtins.readFile (
-                lib.filesystem.listFilesRecursive ./config
-            )) ++ [ "-- extraConfig:" extraConfig ]
-        );
 }
