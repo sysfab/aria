@@ -1,7 +1,16 @@
-{ ... }:
+{ lib, ... }:
 
 {
     flake.nixosModules.waybar = { pkgs, ... }: {
+        aria.pickers.actions.commands = {
+            toggle-bar = {
+                name = "Toggle bar";
+                order = lib.mkDefault 200;
+
+                command = "pkill -USR1 waybar";
+            };
+        };
+
         environment.systemPackages = with pkgs; [
             waybar
         ];

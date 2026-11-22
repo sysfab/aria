@@ -2,24 +2,40 @@
 
 {
     flake.nixosModules.default-pickers = { ... }: {
-        aria.pickers.power = {
-            name = "Power";
+        aria.pickers = {
+            power = {
+                name = "Power";
+                order = lib.mkDefault 10;
 
-            commands = {
-                shutdown = {
-                    name = "Shutdown";
-                    command = lib.mkDefault "shutdown now";
-                };
+                commands = {
+                    shutdown = {
+                        name = "Shutdown";
+                        order = lib.mkDefault 10;
 
-                reboot = {
-                    name = "Reboot";
-                    command = lib.mkDefault "systemctl reboot";
-                };
+                        command = lib.mkDefault "shutdown now";
+                    };
 
-                logout = {
-                    name = "Logout";
-                    command = lib.mkDefault "sudo pkill -u \${USER}";
+                    reboot = {
+                        name = "Reboot";
+                        order = lib.mkDefault 20;
+
+                        command = lib.mkDefault "systemctl reboot";
+                    };
+
+                    logout = {
+                        name = "Logout";
+                        order = lib.mkDefault 30;
+
+                        command = lib.mkDefault "sudo pkill -u \${USER}";
+                    };
                 };
+            };
+
+            actions = {
+                name = "Quick actions";
+                order = lib.mkDefault 20;
+
+                commands = {};
             };
         };
     };
@@ -47,6 +63,12 @@
                     default = {};
                     description = "Nested picker entries";
                 };
+
+                order = lib.mkOption {
+                    type = types.int;
+                    default = 100;
+                    description = "Display order (lower values appear first)";
+                };
             };
         });
 
@@ -65,18 +87,35 @@
 
         mkMenu = pickers:
             let
-                names = lib.mapAttrsToList (_: p: p.name) pickers;
+                entries = lib.sort
+                    (a: b:
+                        a.value.order < b.value.order
+                        || (
+                            a.value.order == b.value.order
+                            && a.key < b.key
+                        )
+                    )
+                    (lib.mapAttrsToList (key: value: {
+                        inherit key value;
+                    }) pickers);
+
+                names = map (entry: entry.value.name) entries;
 
                 cases = lib.concatStringsSep "\n" (
-                    lib.mapAttrsToList (_: p: ''
-                        ${lib.escapeShellArg p.name})
-                            ${
-                                if p.command != null
-                                then p.command
-                                else mkMenu p.commands
-                            }
-                            ;;
-                    '') pickers
+                    map (entry:
+                        let
+                            p = entry.value;
+                        in
+                        ''
+                            ${lib.escapeShellArg p.name})
+                                ${
+                                    if p.command != null
+                                    then p.command
+                                    else mkMenu p.commands
+                                }
+                                ;;
+                        ''
+                    ) entries
                 );
             in
             if pickers == {} then
