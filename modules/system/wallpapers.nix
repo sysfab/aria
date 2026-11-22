@@ -9,6 +9,22 @@ in
 {
     flake.nixosModules.wallpapers = { config, pkgs, ... }:
     let
+        aria-wallpaper-set = pkgs.writeShellScriptBin "aria-wallpaper-set" ''
+            wallpapers="$HOME/${folder}"
+            selected="$HOME/${selected}"
+
+            [[ -n "$1" ]] || exit 1
+
+            wallpaper="$wallpapers/$1"
+            [[ -f "$wallpaper" ]] || {
+                echo "Wallpaper not found: $1" >&2
+                exit 1
+            }
+
+            printf '%s\n' "$wallpaper" > "$selected"
+            aria-wallpaper-update
+        '';
+
         aria-wallpaper-update = pkgs.writeShellScriptBin "aria-wallpaper-update" ''
             selected="$HOME/${selected}"
             default="$HOME/${default}"
@@ -42,8 +58,6 @@ in
 
         aria-pick-wallpaper = pkgs.writeShellScriptBin "aria-pick-wallpaper" ''
             wallpapers="$HOME/Pictures/Wallpapers"
-            selected="$wallpapers/.selected.txt"
-
             [[ -d "$wallpapers" ]] || exit 1
 
             files=()
@@ -77,8 +91,7 @@ in
                 [[ "$index" -lt "''${#files[@]}" ]] || exit 1
             fi
 
-            printf '%s\n' "''${files[index]}" > "$selected"
-            aria-wallpaper-update
+            aria-wallpaper-set "''${files[index]##*/}"
         '';
     in
     {
@@ -89,6 +102,7 @@ in
 
         environment.systemPackages = [
             pkgs.awww
+            aria-wallpaper-set
             aria-wallpaper-update
             aria-pick-wallpaper
         ];
