@@ -2,25 +2,23 @@
 
 {
     flake.nixosModules.default-pickers = { ... }: {
-        aria.pickers = {
-            power = {
-                name = "Power";
+        aria.pickers.power = {
+            name = "Power";
 
-                commands = {
-                    shutdown = {
-                        name = "Shutdown";
-                        command = lib.mkDefault "shutdown now";
-                    };
+            commands = {
+                shutdown = {
+                    name = "Shutdown";
+                    command = lib.mkDefault "shutdown now";
+                };
 
-                    reboot = {
-                        name = "Reboot";
-                        command = lib.mkDefault "systemctl reboot";
-                    };
+                reboot = {
+                    name = "Reboot";
+                    command = lib.mkDefault "systemctl reboot";
+                };
 
-                    logout = {
-                        name = "Logout";
-                        command = lib.mkDefault "sudo pkill -u \${USER}";
-                    };
+                logout = {
+                    name = "Logout";
+                    command = lib.mkDefault "sudo pkill -u \${USER}";
                 };
             };
         };
