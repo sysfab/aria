@@ -9,7 +9,11 @@
         ];
     };
 
-    flake.homeModules.zed = { ... }: {
+    flake.homeModules.zed = { lib, ... }: {
+        aria.shell.aliases = {
+            code = lib.mkDefault "zeditor";
+        };
+
         xdg.config.files = {
             "zed/settings.json".source = ./settings.json;
         };

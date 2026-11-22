@@ -7,20 +7,6 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
 #
-# ALIASES
-#
-alias cd='z'
-alias cdi='zi'
-
-alias cat='bat'
-alias catp='bat --plain'
-
-alias ls='eza --long --color=always --no-user --no-permissions --no-filesize --no-time'
-alias lsf='eza --long'
-
-alias code='zeditor'
-
-#
 # HIGHLIGHING
 #
 typeset -A ZSH_HIGHLIGHT_STYLES
