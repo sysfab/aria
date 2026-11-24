@@ -57,6 +57,11 @@
                         type = lib.types.lazyAttrsOf lib.types.deferredModule;
                         default = { };
                     };
+
+                    lib = lib.mkOption {
+                        type = lib.types.lazyAttrsOf lib.types.raw;
+                        default = {};
+                    };
                 };
             })
         ] ++ modules;
