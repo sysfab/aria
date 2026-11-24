@@ -1,41 +1,55 @@
-{ lib, ... }:
+{ self, lib, ... }:
 
 {
+    flake.lib.setup-github-token = ''
+        if token=$(gh auth token 2>/dev/null); then
+            export NIX_CONFIG="''${NIX_CONFIG:-}
+        access-tokens = github.com=$token"
+        fi
+    '';
+
     flake.nixosModules.scripts = { config, pkgs, ... }: {
-        options.aria.flake = lib.mkOption {
-            type = lib.types.str;
-            default = "";
+        options.aria = {
+            flake = lib.mkOption {
+                type = lib.types.str;
+                default = "";
+            };
+
+            scripts = lib.mkOption {
+                type = lib.types.attrsOf lib.types.str;
+                default = {};
+            };
         };
 
-        config = let
-            setup-github-token = ''if token=$(gh auth token); then
-                export NIX_CONFIG="access-tokens = github.com=$token"
-            fi'';
+        config = {
+            aria.scripts = {
+                rebuild = ''
+                    ${self.lib.setup-github-token}
+                    exec nh os switch "$@"
+                '';
 
-            rebuild = pkgs.writeShellScriptBin "rebuild" ''
-                set -e
-                ${setup-github-token}
-                nh os switch
-            '';
+                update = ''
+                    ${self.lib.setup-github-token}
+                    cd ${lib.escapeShellArg config.aria.flake}
+                    exec nix flake update "$@"
+                '';
 
-            update = pkgs.writeShellScriptBin "update" ''
-                set -e
-                ${setup-github-token}
-                pushd "''${NH_OS_FLAKE:-$NH_FLAKE}"
-                nix flake update
-                popd
-            '';
+                upgrade = ''
+                    update
+                    exec rebuild "$@"
+                '';
 
-            collect-garbage = pkgs.writeShellScriptBin "collect-garbage" ''
-                set -e
-                nh clean all
-            '';
-        in {
-            environment.systemPackages = [
-                rebuild
-                update
-                collect-garbage
-            ];
+                collect-garbage = ''
+                    exec nh clean all "$@"
+                '';
+            };
+
+            environment.systemPackages = lib.mapAttrsToList
+                (name: script: pkgs.writeShellScriptBin name ''
+                    set -euo pipefail
+                    ${script}
+                '')
+                config.aria.scripts;
 
             programs.nh = {
                 enable = lib.mkForce true;
