@@ -78,6 +78,8 @@ Binds(
     { { SUPER, S },          Layout("rotatesplit") },
     { { SUPER, D },          Layout("swapsplit") },
 
+    { { SUPER, TAB },        "mpv-clipboard" },
+
     { { "",    PRINT },      Programs("hyprshot").Region },
     { { SHIFT, PRINT },      Programs("hyprshot").Window },
     { { CTRL,  PRINT },      Programs("hyprshot").Screen },
