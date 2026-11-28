@@ -14,6 +14,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        nix-index-database = {
+            url = "github:nix-community/nix-index-database";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         anyrun.url = "github:anyrun-org/anyrun";
         zen-browser = {
             url = "github:youwen5/zen-browser-flake";
@@ -38,6 +43,7 @@
             modules = {
                 system = [
                     inputs.hjem.nixosModules.default
+                    inputs.nix-index-database.nixosModules.default
                     ({...}: {
                         hjem = {
                             clobberByDefault = true;
