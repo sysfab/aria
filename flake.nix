@@ -56,8 +56,8 @@
         };
 
         imports = [
-            ({lib, flake-parts-lib, ...}: {
-                options.flake = flake-parts-lib.mkSubmoduleOptions {
+            ({lib, ...}: {
+                options.flake = {
                     homeModules = lib.mkOption {
                         type = lib.types.lazyAttrsOf lib.types.deferredModule;
                         default = { };
