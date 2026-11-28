@@ -28,15 +28,14 @@
 
     outputs = inputs @ { self, ... }:
     let
-        importlib = import ./import.nix;
-        modules = (importlib ./modules);
+        modules = (inputs.parts.import ./modules);
     in
     inputs.parts.lib.mkFlake { inherit inputs; } {
         flake = {
             parts = inputs.parts;
 
             lib = {
-                import = importlib;
+                import = inputs.parts.import;
                 mkFlake = inputs.parts.lib.mkFlake;
             };
 
