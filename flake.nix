@@ -6,7 +6,7 @@
 
         parts = {
             url = "github:nix-aria/parts";
-            inputs.nixpkgs-lib.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs";
         };
 
         hjem = {
